@@ -184,7 +184,7 @@ async function calculate(){
 const network=document.getElementById("network").value
 
 const response=await fetch(
-"http://127.0.0.1:8000/subnet?network="+network
+"https://network-toolkit-api.onrender.com/subnet?network="+network
 )
 
 const data=await response.json()
@@ -206,7 +206,7 @@ const neighbor_ip=document.getElementById("neighbor_ip").value
 const peer_as=document.getElementById("peer_as").value
 
 const response=await fetch(
-"http://127.0.0.1:8000/bgp?local_as="+local_as+
+"https://network-toolkit-api.onrender.com/bgp?local_as="+local_as+
 "&neighbor_ip="+neighbor_ip+
 "&peer_as="+peer_as
 )
@@ -226,7 +226,7 @@ const start_ip=document.getElementById("start_ip").value
 const end_ip=document.getElementById("end_ip").value
 
 const response=await fetch(
-"http://127.0.0.1:8000/iprange?start_ip="+start_ip+"&end_ip="+end_ip
+"https://network-toolkit-api.onrender.com/iprange?start_ip="+start_ip+"&end_ip="+end_ip
 )
 
 const data=await response.json()
