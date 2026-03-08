@@ -183,11 +183,31 @@ async function calculate(){
 
 const network=document.getElementById("network").value
 
+async function calculate(){
+
+try{
+
+const network=document.getElementById("network").value
+
 const response=await fetch(
 "https://network-toolkit-api.onrender.com/subnet?network="+network
 )
 
 const data=await response.json()
+
+document.getElementById("result").innerHTML=
+"<p><b>Network Address:</b> "+data.network_address+"</p>"+
+"<p><b>Broadcast Address:</b> "+data.broadcast_address+"</p>"+
+"<p><b>Total Hosts:</b> "+data.total_hosts+"</p>"
+
+}catch(err){
+
+document.getElementById("result").innerHTML=
+"<p style='color:red'>Error connecting to API</p>"
+
+}
+
+}
 
 document.getElementById("result").innerHTML=
 "<p><b>Network Address:</b> "+data.network_address+"</p>"+
@@ -205,6 +225,14 @@ const local_as=document.getElementById("local_as").value
 const neighbor_ip=document.getElementById("neighbor_ip").value
 const peer_as=document.getElementById("peer_as").value
 
+async function generateBGP(){
+
+try{
+
+const local_as=document.getElementById("local_as").value
+const neighbor_ip=document.getElementById("neighbor_ip").value
+const peer_as=document.getElementById("peer_as").value
+
 const response=await fetch(
 "https://network-toolkit-api.onrender.com/bgp?local_as="+local_as+
 "&neighbor_ip="+neighbor_ip+
@@ -212,6 +240,16 @@ const response=await fetch(
 )
 
 const data=await response.json()
+
+document.getElementById("bgp_result").innerText=data.config
+
+}catch(err){
+
+document.getElementById("bgp_result").innerText="API error"
+
+}
+
+}
 
 document.getElementById("bgp_result").innerText=data.config
 
@@ -225,11 +263,29 @@ async function calculateRange(){
 const start_ip=document.getElementById("start_ip").value
 const end_ip=document.getElementById("end_ip").value
 
+async function calculateRange(){
+
+try{
+
+const start_ip=document.getElementById("start_ip").value
+const end_ip=document.getElementById("end_ip").value
+
 const response=await fetch(
 "https://network-toolkit-api.onrender.com/iprange?start_ip="+start_ip+"&end_ip="+end_ip
 )
 
 const data=await response.json()
+
+document.getElementById("range_result").innerHTML=
+"<p><b>Total IPs:</b> "+data.total_ips+"</p>"
+
+}catch(err){
+
+document.getElementById("range_result").innerHTML="API error"
+
+}
+
+}
 
 document.getElementById("range_result").innerHTML=
 "<p><b>Total IPs:</b> "+data.total_ips+"</p>"

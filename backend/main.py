@@ -4,6 +4,7 @@ from tools.subnet import calculate_subnet
 from tools.bgp import generate_bgp_config
 from tools.iprange import calculate_ip_range
 
+
 app = FastAPI()
 
 app.add_middleware(
