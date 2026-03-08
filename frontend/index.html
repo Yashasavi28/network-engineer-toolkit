@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Network Engineer Toolkit</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f6f8;
+margin:0;
+padding:0;
+}
+
+/* HEADER BAR */
+
+.header{
+background:#1f2937;
+color:white;
+padding:18px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+}
+
+/* TAGLINE */
+
+.tagline{
+text-align:center;
+color:#6b7280;
+margin-top:10px;
+margin-bottom:40px;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+/* TOOL CARDS */
+
+.card{
+background:white;
+padding:25px;
+margin-bottom:30px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.card h2{
+margin-top:0;
+}
+
+/* INPUT FIELDS */
+
+input{
+padding:10px;
+width:100%;
+margin-bottom:12px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:14px;
+}
+
+/* BUTTONS */
+
+button{
+padding:10px 18px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:500;
+font-size:14px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+/* RESULT BOX */
+
+.result-box{
+margin-top:15px;
+background:#f1f5f9;
+padding:12px;
+border-radius:6px;
+}
+
+/* CODE BOX */
+
+pre{
+background:#111827;
+color:#e5e7eb;
+padding:12px;
+border-radius:6px;
+overflow-x:auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Network Engineer Toolkit
+</div>
+
+<div class="tagline">
+Simple tools for network engineers
+</div>
+
+
+<div class="container">
+
+<!-- SUBNET TOOL -->
+
+<div class="card">
+
+<h2>Subnet Calculator</h2>
+
+<input id="network" placeholder="192.168.1.0/24">
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result-box" id="result"></div>
+
+</div>
+
+
+
+<!-- BGP TOOL -->
+
+<div class="card">
+
+<h2>BGP Config Generator</h2>
+
+<input id="local_as" placeholder="Local AS (example: 65001)">
+<input id="neighbor_ip" placeholder="Neighbor IP (example: 10.0.0.2)">
+<input id="peer_as" placeholder="Peer AS (example: 65002)">
+
+<button onclick="generateBGP()">Generate Config</button>
+
+<pre id="bgp_result"></pre>
+
+</div>
+
+
+
+<!-- IP RANGE TOOL -->
+
+<div class="card">
+
+<h2>IP Range Calculator</h2>
+
+<input id="start_ip" placeholder="Start IP (example: 192.168.1.10)">
+<input id="end_ip" placeholder="End IP (example: 192.168.1.20)">
+
+<button onclick="calculateRange()">Calculate Range</button>
+
+<div class="result-box" id="range_result"></div>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+/* SUBNET CALCULATOR */
+
+async function calculate(){
+
+const network=document.getElementById("network").value
+
+const response=await fetch(
+"http://127.0.0.1:8000/subnet?network="+network
+)
+
+const data=await response.json()
+
+document.getElementById("result").innerHTML=
+"<p><b>Network Address:</b> "+data.network_address+"</p>"+
+"<p><b>Broadcast Address:</b> "+data.broadcast_address+"</p>"+
+"<p><b>Total Hosts:</b> "+data.total_hosts+"</p>"
+
+}
+
+
+/* BGP CONFIG GENERATOR */
+
+async function generateBGP(){
+
+const local_as=document.getElementById("local_as").value
+const neighbor_ip=document.getElementById("neighbor_ip").value
+const peer_as=document.getElementById("peer_as").value
+
+const response=await fetch(
+"http://127.0.0.1:8000/bgp?local_as="+local_as+
+"&neighbor_ip="+neighbor_ip+
+"&peer_as="+peer_as
+)
+
+const data=await response.json()
+
+document.getElementById("bgp_result").innerText=data.config
+
+}
+
+
+/* IP RANGE CALCULATOR */
+
+async function calculateRange(){
+
+const start_ip=document.getElementById("start_ip").value
+const end_ip=document.getElementById("end_ip").value
+
+const response=await fetch(
+"http://127.0.0.1:8000/iprange?start_ip="+start_ip+"&end_ip="+end_ip
+)
+
+const data=await response.json()
+
+document.getElementById("range_result").innerHTML=
+"<p><b>Total IPs:</b> "+data.total_ips+"</p>"
+
+}
+
+</script>
+
+
+</body>
+</html>
