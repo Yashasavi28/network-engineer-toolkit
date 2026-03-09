@@ -9,6 +9,7 @@ from tools.vlsm import calculate_vlsm
 from tools.wildcard import calculate_wildcard
 from tools.ipconvert import ip_to_binary
 from tools.reversedns import reverse_dns
+from tools.ipclass import detect_ip_class
 
 tool_usage = {
     "subnet": 0,
@@ -96,6 +97,13 @@ def reversedns(ip: str):
     tool_usage["reversedns"] = tool_usage.get("reversedns", 0) + 1
 
     return reverse_dns(ip)
+
+@app.get("/ipclass")
+def ipclass(ip: str):
+
+    tool_usage["ipclass"] = tool_usage.get("ipclass", 0) + 1
+
+    return detect_ip_class(ip)
 
 @app.get("/stats")
 def stats():
