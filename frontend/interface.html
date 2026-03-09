@@ -34,7 +34,7 @@ Interface Config Generator
 Generate Config
 </button>
 
-<div id="result" class="mt-6"></div>
+<div id="result" class="mt-6 text-sm"></div>
 
 </div>
 
@@ -50,7 +50,11 @@ let mask=document.getElementById("mask").value
 let description=document.getElementById("description").value
 
 const response=await fetch(
-"https://network-toolkit-api.onrender.com/interface?interface="+interfaceName+"&ip="+ip+"&mask="+mask+"&description="+description
+"https://network-toolkit-api.onrender.com/interface?interface="+
+encodeURIComponent(interfaceName)+
+"&ip="+encodeURIComponent(ip)+
+"&mask="+encodeURIComponent(mask)+
+"&description="+encodeURIComponent(description)
 )
 
 const data=await response.json()
@@ -58,13 +62,13 @@ const data=await response.json()
 let html=""
 
 html+="<h3 class='font-semibold mt-4'>Cisco</h3>"
-html+="<pre>"+data.cisco+"</pre>"
+html+="<pre class='bg-gray-900 text-green-400 p-3 rounded overflow-x-auto'>"+data.cisco+"</pre>"
 
 html+="<h3 class='font-semibold mt-4'>Juniper</h3>"
-html+="<pre>"+data.juniper+"</pre>"
+html+="<pre class='bg-gray-900 text-green-400 p-3 rounded overflow-x-auto'>"+data.juniper+"</pre>"
 
 html+="<h3 class='font-semibold mt-4'>Arista</h3>"
-html+="<pre>"+data.arista+"</pre>"
+html+="<pre class='bg-gray-900 text-green-400 p-3 rounded overflow-x-auto'>"+data.arista+"</pre>"
 
 document.getElementById("result").innerHTML=html
 
