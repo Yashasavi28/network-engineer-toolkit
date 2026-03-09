@@ -7,6 +7,7 @@ from tools.cidr import summarize_networks
 from tools.ipv6 import calculate_ipv6
 from tools.vlsm import calculate_vlsm
 from tools.wildcard import calculate_wildcard
+from tools.ipconvert import ip_to_binary
 
 tool_usage = {
     "subnet": 0,
@@ -80,6 +81,13 @@ def wildcard(mask: str):
     tool_usage["wildcard"] = tool_usage.get("wildcard", 0) + 1
 
     return calculate_wildcard(mask)
+
+@app.get("/ipconvert")
+def ipconvert(ip: str):
+
+    tool_usage["ipconvert"] = tool_usage.get("ipconvert", 0) + 1
+
+    return ip_to_binary(ip)
 
 @app.get("/stats")
 def stats():
