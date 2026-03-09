@@ -6,13 +6,21 @@
 
 <meta charset="UTF-8">
 
-<title>Network Engineer Toolkit</title>
+<title>NetOpsKit - Networking Tools for Engineers</title>
 
-<meta name="description" content="Free networking tools for engineers including subnet calculator, CIDR summarization, IPv6 subnet calculator and BGP configuration generator.">
+<link rel="icon" href="assets/favicon.ico">
 
-<meta name="keywords" content="subnet calculator, CIDR calculator, IPv6 subnet calculator, networking tools, BGP config generator">
+<meta property="og:title" content="NetOpsKit - Networking Tools for Engineers">
 
-<meta name="author" content="Network Engineer Toolkit">
+<meta property="og:description" content="Free networking calculators and configuration generators for network engineers.">
+
+<meta property="og:image" content="https://yourdomain.com/assets/og.png">
+
+<meta property="og:type" content="website">
+
+<meta name="description" content="NetOpsKit is a free toolkit for network engineers. Subnet calculator, CIDR tools, IPv6 tools, configuration generators and more.">
+
+<meta name="author" content="NetOpsKit">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -24,8 +32,14 @@
 
 <div class="bg-gray-900 text-white p-5 flex justify-between items-center">
 
+<div class="flex items-center gap-2">
+
+<img src="assets/logo.png" width="32">
+
 <div class="text-xl font-bold">
-Network Engineer Toolkit
+NetOpsKit
+</div>
+
 </div>
 
 <button
@@ -39,7 +53,35 @@ id="darkToggle"
 </div>
 
 <div class="text-center text-gray-500 mt-2">
-Simple networking tools for engineers worldwide
+Networking Tools for Engineers
+</div>
+
+<!-- HERO SECTION -->
+
+<div class="max-w-6xl mx-auto mt-10 px-6 text-center">
+
+<h1 class="text-4xl font-bold text-gray-800 mb-4">
+NetOpsKit
+</h1>
+
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">
+Fast networking calculators and configuration generators for network engineers.
+Subnetting, CIDR, IPv6, BGP configs and more — all in one place.
+</p>
+
+<div class="mt-6">
+
+<a href="#tools"
+class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">
+Start Using Tools
+</a>
+
+</div>
+
+<div class="mt-6 text-sm text-gray-500">
+Used by network engineers worldwide 🌍
+</div>
+
 </div>
 
 <!-- SEARCH -->
@@ -130,6 +172,7 @@ Quickly generate basic BGP neighbor configuration.
 </div>
 
 <!-- IP ADDRESS TOOLS -->
+<div id="tools">
 
 <div class="max-w-6xl mx-auto mt-12 px-6">
 
@@ -270,11 +313,11 @@ Loading stats...
 <div class="max-w-6xl mx-auto px-6 py-10 text-center">
 
 <div class="text-white font-semibold text-lg mb-3">
-Network Engineer Toolkit
+NetOpsKit
 </div>
 
 <div class="text-sm text-gray-400">
-Simple networking tools for engineers. Built for quick calculations and configurations.
+NetOpsKit provides networking calculators and configuration generators for network engineers.
 </div>
 
 <div class="mt-4">
@@ -291,12 +334,23 @@ API Docs
 Analytics
 </a>
 
+<a href="about.html" class="hover:text-white mr-4">
+About
+</a>
+
+<a href="privacy.html" class="hover:text-white mr-4">
+Privacy
+</a>
+
+<a href="terms.html" class="hover:text-white">
+Terms
+</a>
 </div>
 
 </div>
 
 <div class="text-center text-gray-500 text-sm pb-6">
-© 2026 Network Engineer Toolkit
+© 2026 NetOpsKit
 </div>
 
 </div>
@@ -433,7 +487,6 @@ document.getElementById("most_used_tools").innerHTML="Unable to load data"
 
 loadMostUsedTools()
 
-
 function toggleDarkMode(){
 
 let body=document.getElementById("body")
@@ -478,7 +531,6 @@ document.getElementById("darkToggle").innerText="☀️ Light"
 }
 
 loadTheme()
-
 
 </script>
 
