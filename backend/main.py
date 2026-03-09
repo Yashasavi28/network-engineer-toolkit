@@ -6,6 +6,7 @@ from tools.iprange import calculate_ip_range
 from tools.cidr import summarize_networks
 from tools.ipv6 import calculate_ipv6
 from tools.vlsm import calculate_vlsm
+from tools.wildcard import calculate_wildcard
 
 tool_usage = {
     "subnet": 0,
@@ -72,6 +73,13 @@ def vlsm(network: str, hosts: str):
     tool_usage["vlsm"] = tool_usage.get("vlsm", 0) + 1
 
     return calculate_vlsm(network, hosts)
+
+@app.get("/wildcard")
+def wildcard(mask: str):
+
+    tool_usage["wildcard"] = tool_usage.get("wildcard", 0) + 1
+
+    return calculate_wildcard(mask)
 
 @app.get("/stats")
 def stats():

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Wildcard Mask Calculator</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+<div class="bg-gray-900 text-white p-5 text-center text-xl font-bold">
+Wildcard Mask Calculator
+</div>
+
+<div class="max-w-xl mx-auto mt-10">
+
+<a href="index.html" class="text-blue-600">← Back to Tools</a>
+
+<div class="bg-white p-6 rounded-xl shadow mt-4">
+
+<input
+id="mask"
+placeholder="Subnet Mask (example: 255.255.255.0)"
+class="w-full border p-3 rounded"
+/>
+
+<button
+onclick="calculateWildcard()"
+class="mt-4 bg-blue-600 text-white px-4 py-2 rounded"
+
+>
+
+Calculate </button>
+
+<div id="result" class="mt-4 text-gray-700"></div>
+
+</div>
+
+</div>
+
+<script>
+
+async function calculateWildcard(){
+
+let mask=document.getElementById("mask").value
+
+const response=await fetch(
+"https://network-toolkit-api.onrender.com/wildcard?mask="+mask
+)
+
+const data=await response.json()
+
+document.getElementById("result").innerHTML=
+"<p><b>Wildcard Mask:</b> "+data.wildcard_mask+"</p>"
+
+}
+
+</script>
+
+</body>
+
+</html>
