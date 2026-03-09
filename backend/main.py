@@ -10,6 +10,7 @@ from tools.wildcard import calculate_wildcard
 from tools.ipconvert import ip_to_binary
 from tools.reversedns import reverse_dns
 from tools.ipclass import detect_ip_class
+from tools.interface import generate_interface_config
 
 tool_usage = {
     "subnet": 0,
@@ -104,6 +105,13 @@ def ipclass(ip: str):
     tool_usage["ipclass"] = tool_usage.get("ipclass", 0) + 1
 
     return detect_ip_class(ip)
+
+@app.get("/interface")
+def interface(interface: str, ip: str, mask: str, description: str):
+
+    tool_usage["interface"] = tool_usage.get("interface", 0) + 1
+
+    return generate_interface_config(interface, ip, mask, description)
 
 @app.get("/stats")
 def stats():
