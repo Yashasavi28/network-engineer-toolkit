@@ -4,7 +4,22 @@
 
 <head>
 
-<title>VLSM Calculator</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VLSM Calculator | NetOpsKit</title>
+
+<meta name="description" content="Free VLSM calculator for network engineers. Quickly calculate subnets based on host requirements.">
+
+<link rel="canonical" href="https://yourdomain.com/vlsm.html">
+
+<link rel="icon" href="assets/favicon.ico">
+
+<meta property="og:title" content="VLSM Calculator | NetOpsKit">
+<meta property="og:description" content="Calculate VLSM subnets instantly for network design.">
+<meta property="og:image" content="https://yourdomain.com/assets/og.png">
+<meta property="og:type" content="website">
 
 <style>
 
@@ -173,6 +188,7 @@ font-size:14px;
 .related a:hover{
 background:#e2e8f0;
 }
+
 </style>
 
 </head>
@@ -181,7 +197,7 @@ background:#e2e8f0;
 
 <div class="header">
 <a href="index.html" style="color:white;text-decoration:none;">
-Network Engineer Toolkit
+NetOpsKit
 </a>
 </div>
 
@@ -195,7 +211,17 @@ Network Engineer Toolkit
 
 <h3>Networking Tools</h3>
 
-<a href="subnet.html">Subnet Calculator</a> <a href="cidr.html">CIDR Summarization</a> <a href="ipv6.html">IPv6 Calculator</a> <a href="iprange.html">IP Range Calculator</a> <a href="vlsm.html">VLSM Calculator</a> <a href="wildcard.html">Wildcard Mask</a> <a href="ipconvert.html">IP Converter</a> <a href="reversedns.html">Reverse DNS</a> <a href="ipclass.html">IP Class Detector</a> <a href="bgp.html">BGP Generator</a> <a href="interface.html">Interface Generator</a>
+<a href="subnet.html">Subnet Calculator</a>
+<a href="cidr.html">CIDR Summarization</a>
+<a href="ipv6.html">IPv6 Calculator</a>
+<a href="iprange.html">IP Range Calculator</a>
+<a href="vlsm.html">VLSM Calculator</a>
+<a href="wildcard.html">Wildcard Mask</a>
+<a href="ipconvert.html">IP Converter</a>
+<a href="reversedns.html">Reverse DNS</a>
+<a href="ipclass.html">IP Class Detector</a>
+<a href="bgp.html">BGP Generator</a>
+<a href="interface.html">Interface Generator</a>
 
 </div>
 
@@ -206,8 +232,6 @@ Network Engineer Toolkit
 <div class="card">
 
 <h2>VLSM Calculator</h2>
-
-<!-- Example -->
 
 <div class="example">
 
@@ -220,17 +244,9 @@ Hosts: <b>50,20,10</b><br><br>
 
 </div>
 
-<input
-id="network"
-placeholder="Network (example: 192.168.0.0/24)"
+<input id="network" placeholder="Network (example: 192.168.0.0/24)">
 
->
-
-<input
-id="hosts"
-placeholder="Hosts needed (example: 50,20,10)"
-
->
+<input id="hosts" placeholder="Hosts needed (example: 50,20,10)">
 
 <button onclick="calculateVLSM()">Calculate</button>
 
@@ -238,6 +254,10 @@ placeholder="Hosts needed (example: 50,20,10)"
 
 <button onclick="copyResult()" class="copybtn">
 Copy Result
+</button>
+
+<button onclick="copyShareLink()" class="copybtn">
+🔗 Copy Share Link
 </button>
 
 <div class="related">
@@ -249,6 +269,7 @@ Copy Result
 <a href="iprange.html">IP Range Calculator</a>
 
 </div>
+
 </div>
 
 </div>
@@ -260,16 +281,19 @@ Copy Result
 <script>
 
 function fillExample(){
-
 document.getElementById("network").value="192.168.0.0/24"
 document.getElementById("hosts").value="50,20,10"
-
 }
 
 async function calculateVLSM(){
 
-let network=document.getElementById("network").value
-let hosts=document.getElementById("hosts").value
+let network=document.getElementById("network").value.trim()
+let hosts=document.getElementById("hosts").value.trim()
+
+if(!network || !hosts){
+alert("Please enter network and host requirements")
+return
+}
 
 document.getElementById("result").innerHTML="Calculating..."
 
@@ -301,31 +325,17 @@ function copyResult(){
 
 let text=document.getElementById("result").innerText
 
+if(!text){
+alert("Nothing to copy")
+return
+}
+
 navigator.clipboard.writeText(text)
 
 alert("Result copied to clipboard")
 
 }
-function getURLParameter(name){
-const params=new URLSearchParams(window.location.search)
-return params.get(name)
-}
 
-window.onload=function(){
-
-let network=getURLParameter("network")
-let hosts=getURLParameter("hosts")
-
-if(network && hosts){
-
-document.getElementById("network").value=network
-document.getElementById("hosts").value=hosts
-
-calculateVLSM()
-
-}
-
-}
 function copyShareLink(){
 
 let network=document.getElementById("network").value
@@ -345,6 +355,7 @@ navigator.clipboard.writeText(url)
 alert("🔗 Share link copied")
 
 }
+
 window.onload=function(){
 
 const params=new URLSearchParams(window.location.search)
@@ -362,6 +373,7 @@ calculateVLSM()
 }
 
 }
+
 </script>
 
 </body>

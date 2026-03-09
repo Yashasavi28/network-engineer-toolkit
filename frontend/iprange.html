@@ -4,7 +4,20 @@
 
 <head>
 
-<title>IP Range Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IP Range Calculator | NetOpsKit</title>
+
+<meta name="description" content="Calculate the number of IP addresses between two IPv4 addresses instantly. Useful for network planning and troubleshooting.">
+
+<link rel="canonical" href="https://yourdomain.com/iprange.html">
+<link rel="icon" href="assets/favicon.ico">
+
+<meta property="og:title" content="IP Range Calculator | NetOpsKit">
+<meta property="og:description" content="Calculate number of IP addresses between two IPv4 addresses instantly.">
+<meta property="og:image" content="https://yourdomain.com/assets/og.png">
+<meta property="og:type" content="website">
 
 <style>
 
@@ -72,7 +85,7 @@ background:#f1f5f9;
 transform:translateX(3px);
 }
 
-/* MAIN AREA */
+/* MAIN */
 
 .main{
 flex:1;
@@ -173,6 +186,7 @@ font-size:14px;
 .related a:hover{
 background:#e2e8f0;
 }
+
 </style>
 
 </head>
@@ -181,7 +195,7 @@ background:#e2e8f0;
 
 <div class="header">
 <a href="index.html" style="color:white;text-decoration:none;">
-Network Engineer Toolkit
+NetOpsKit
 </a>
 </div>
 
@@ -195,7 +209,17 @@ Network Engineer Toolkit
 
 <h3>Networking Tools</h3>
 
-<a href="subnet.html">Subnet Calculator</a> <a href="cidr.html">CIDR Summarization</a> <a href="ipv6.html">IPv6 Calculator</a> <a href="iprange.html">IP Range Calculator</a> <a href="vlsm.html">VLSM Calculator</a> <a href="wildcard.html">Wildcard Mask</a> <a href="ipconvert.html">IP Converter</a> <a href="reversedns.html">Reverse DNS</a> <a href="ipclass.html">IP Class Detector</a> <a href="bgp.html">BGP Generator</a> <a href="interface.html">Interface Generator</a>
+<a href="subnet.html">Subnet Calculator</a>
+<a href="cidr.html">CIDR Summarization</a>
+<a href="ipv6.html">IPv6 Calculator</a>
+<a href="iprange.html">IP Range Calculator</a>
+<a href="vlsm.html">VLSM Calculator</a>
+<a href="wildcard.html">Wildcard Mask</a>
+<a href="ipconvert.html">IP Converter</a>
+<a href="reversedns.html">Reverse DNS</a>
+<a href="ipclass.html">IP Class Detector</a>
+<a href="bgp.html">BGP Generator</a>
+<a href="interface.html">Interface Generator</a>
 
 </div>
 
@@ -206,8 +230,6 @@ Network Engineer Toolkit
 <div class="card">
 
 <h2>IP Range Calculator</h2>
-
-<!-- Example -->
 
 <div class="example">
 
@@ -220,8 +242,6 @@ End IP: <b>192.168.1.20</b><br><br>
 
 </div>
 
-<!-- Inputs -->
-
 <input id="start_ip" placeholder="Start IP (example: 192.168.1.10)">
 <input id="end_ip" placeholder="End IP (example: 192.168.1.20)">
 
@@ -233,7 +253,7 @@ End IP: <b>192.168.1.20</b><br><br>
 Copy Result
 </button>
 
-<button type="button" onclick="copyShareLink()" class="copybtn">
+<button onclick="copyShareLink()" class="copybtn">
 🔗 Copy Share Link
 </button>
 
@@ -246,6 +266,7 @@ Copy Result
 <a href="ipclass.html">IP Class Detector</a>
 
 </div>
+
 </div>
 
 </div>
@@ -265,8 +286,13 @@ document.getElementById("end_ip").value="192.168.1.20"
 
 async function calculate(){
 
-const start_ip=document.getElementById("start_ip").value
-const end_ip=document.getElementById("end_ip").value
+const start_ip=document.getElementById("start_ip").value.trim()
+const end_ip=document.getElementById("end_ip").value.trim()
+
+if(!start_ip || !end_ip){
+alert("Enter start and end IP")
+return
+}
 
 document.getElementById("result").innerHTML="Calculating..."
 
@@ -293,32 +319,17 @@ function copyResult(){
 
 let text=document.getElementById("result").innerText
 
+if(!text){
+alert("Nothing to copy")
+return
+}
+
 navigator.clipboard.writeText(text)
 
 alert("Result copied to clipboard")
 
 }
 
-function getURLParameter(name){
-const params=new URLSearchParams(window.location.search)
-return params.get(name)
-}
-
-window.onload=function(){
-
-let start=getURLParameter("start_ip")
-let end=getURLParameter("end_ip")
-
-if(start && end){
-
-document.getElementById("start_ip").value=start
-document.getElementById("end_ip").value=end
-
-calculate()
-
-}
-
-}
 function copyShareLink(){
 
 let start=document.getElementById("start_ip").value
@@ -338,6 +349,7 @@ navigator.clipboard.writeText(url)
 alert("🔗 Share link copied")
 
 }
+
 window.onload=function(){
 
 const params=new URLSearchParams(window.location.search)
@@ -349,11 +361,13 @@ if(start && end){
 
 document.getElementById("start_ip").value=start
 document.getElementById("end_ip").value=end
+
 calculate()
 
 }
 
 }
+
 </script>
 
 </body>

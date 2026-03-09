@@ -4,7 +4,20 @@
 
 <head>
 
-<title>IP Class Detector</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IP Class Detector | NetOpsKit</title>
+
+<meta name="description" content="Detect IPv4 class, type (private/public), and address range instantly. Useful for networking students and engineers.">
+
+<link rel="canonical" href="https://yourdomain.com/ipclass.html">
+<link rel="icon" href="assets/favicon.ico">
+
+<meta property="og:title" content="IP Class Detector | NetOpsKit">
+<meta property="og:description" content="Identify IPv4 class, address type and range instantly.">
+<meta property="og:image" content="https://yourdomain.com/assets/og.png">
+<meta property="og:type" content="website">
 
 <style>
 
@@ -15,8 +28,6 @@ margin:0;
 padding:0;
 }
 
-/* HEADER */
-
 .header{
 background:#1f2937;
 color:white;
@@ -25,8 +36,6 @@ text-align:center;
 font-size:20px;
 font-weight:bold;
 }
-
-/* CONTAINER */
 
 .container{
 max-width:1100px;
@@ -39,8 +48,6 @@ display:flex;
 gap:30px;
 flex-wrap:wrap;
 }
-
-/* SIDEBAR */
 
 .sidebar{
 width:220px;
@@ -72,8 +79,6 @@ background:#f1f5f9;
 transform:translateX(3px);
 }
 
-/* MAIN */
-
 .main{
 flex:1;
 min-width:300px;
@@ -92,8 +97,6 @@ transform:scale(1.01);
 box-shadow:0 4px 14px rgba(0,0,0,0.12);
 }
 
-/* INPUT */
-
 input{
 width:100%;
 padding:10px;
@@ -107,8 +110,6 @@ input:focus{
 outline:none;
 border-color:#2563eb;
 }
-
-/* BUTTON */
 
 button{
 padding:10px 18px;
@@ -125,8 +126,6 @@ button:hover{
 background:#1d4ed8;
 }
 
-/* RESULT */
-
 .result{
 margin-top:20px;
 background:#f1f5f9;
@@ -134,8 +133,6 @@ padding:15px;
 border-radius:6px;
 font-family:monospace;
 }
-
-/* COPY BUTTON */
 
 .copybtn{
 margin-top:10px;
@@ -146,8 +143,6 @@ background:#111827;
 background:black;
 }
 
-/* EXAMPLE */
-
 .example{
 background:#eaf2ff;
 border:1px solid #cbd5e1;
@@ -157,32 +152,6 @@ margin-bottom:15px;
 font-size:14px;
 }
 
-.related{
-margin-top:30px;
-padding-top:15px;
-border-top:1px solid #e5e7eb;
-}
-
-.related h3{
-margin-bottom:10px;
-font-size:16px;
-}
-
-.related a{
-display:inline-block;
-margin-right:12px;
-margin-bottom:8px;
-padding:6px 10px;
-background:#f1f5f9;
-border-radius:5px;
-text-decoration:none;
-color:#2563eb;
-font-size:14px;
-}
-
-.related a:hover{
-background:#e2e8f0;
-}
 </style>
 
 </head>
@@ -191,7 +160,7 @@ background:#e2e8f0;
 
 <div class="header">
 <a href="index.html" style="color:white;text-decoration:none;">
-Network Engineer Toolkit
+NetOpsKit
 </a>
 </div>
 
@@ -199,17 +168,23 @@ Network Engineer Toolkit
 
 <div class="layout">
 
-<!-- SIDEBAR -->
-
 <div class="sidebar">
 
 <h3>Networking Tools</h3>
 
-<a href="subnet.html">Subnet Calculator</a> <a href="cidr.html">CIDR Summarization</a> <a href="ipv6.html">IPv6 Calculator</a> <a href="iprange.html">IP Range Calculator</a> <a href="vlsm.html">VLSM Calculator</a> <a href="wildcard.html">Wildcard Mask</a> <a href="ipconvert.html">IP Converter</a> <a href="reversedns.html">Reverse DNS</a> <a href="ipclass.html">IP Class Detector</a> <a href="bgp.html">BGP Generator</a> <a href="interface.html">Interface Generator</a>
+<a href="subnet.html">Subnet Calculator</a>
+<a href="cidr.html">CIDR Summarization</a>
+<a href="ipv6.html">IPv6 Calculator</a>
+<a href="iprange.html">IP Range Calculator</a>
+<a href="vlsm.html">VLSM Calculator</a>
+<a href="wildcard.html">Wildcard Mask</a>
+<a href="ipconvert.html">IP Converter</a>
+<a href="reversedns.html">Reverse DNS</a>
+<a href="ipclass.html">IP Class Detector</a>
+<a href="bgp.html">BGP Generator</a>
+<a href="interface.html">Interface Generator</a>
 
 </div>
-
-<!-- MAIN TOOL -->
 
 <div class="main">
 
@@ -217,23 +192,16 @@ Network Engineer Toolkit
 
 <h2>IP Class Detector</h2>
 
-<!-- Example -->
-
 <div class="example">
 
 <b>Example</b><br>
-
 IP Address: <b>192.168.1.1</b><br><br>
 
 <button onclick="fillExample()">Use Example</button>
 
 </div>
 
-<input
-id="ip"
-placeholder="Enter IPv4 Address (example: 192.168.1.1)"
-
->
+<input id="ip" placeholder="Enter IPv4 Address (example: 192.168.1.1)">
 
 <button onclick="detectClass()">Detect</button>
 
@@ -241,6 +209,10 @@ placeholder="Enter IPv4 Address (example: 192.168.1.1)"
 
 <button onclick="copyResult()" class="copybtn">
 Copy Result
+</button>
+
+<button onclick="copyShareLink()" class="copybtn">
+🔗 Copy Share Link
 </button>
 
 </div>
@@ -254,14 +226,17 @@ Copy Result
 <script>
 
 function fillExample(){
-
 document.getElementById("ip").value="192.168.1.1"
-
 }
 
 async function detectClass(){
 
-let ip=document.getElementById("ip").value
+let ip=document.getElementById("ip").value.trim()
+
+if(!ip){
+alert("Enter IP address")
+return
+}
 
 document.getElementById("result").innerHTML="Checking..."
 
@@ -290,29 +265,17 @@ function copyResult(){
 
 let text=document.getElementById("result").innerText
 
+if(!text){
+alert("Nothing to copy")
+return
+}
+
 navigator.clipboard.writeText(text)
 
 alert("Result copied to clipboard")
 
 }
 
-function getURLParameter(name){
-const params=new URLSearchParams(window.location.search)
-return params.get(name)
-}
-
-window.onload=function(){
-
-let ip=getURLParameter("ip")
-
-if(ip){
-
-document.getElementById("ip").value=ip
-detectClass()
-
-}
-
-}
 function copyShareLink(){
 
 let ip=document.getElementById("ip").value
@@ -331,6 +294,7 @@ navigator.clipboard.writeText(url)
 alert("🔗 Share link copied")
 
 }
+
 window.onload=function(){
 
 const params=new URLSearchParams(window.location.search)
@@ -345,6 +309,7 @@ detectClass()
 }
 
 }
+
 </script>
 
 </body>

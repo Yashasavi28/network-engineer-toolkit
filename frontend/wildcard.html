@@ -4,7 +4,22 @@
 
 <head>
 
-<title>Wildcard Mask Calculator</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wildcard Mask Calculator | NetOpsKit</title>
+
+<meta name="description" content="Convert subnet mask to wildcard mask instantly. Useful for Cisco ACL and OSPF configurations.">
+
+<link rel="canonical" href="https://yourdomain.com/wildcard.html">
+
+<link rel="icon" href="assets/favicon.ico">
+
+<meta property="og:title" content="Wildcard Mask Calculator | NetOpsKit">
+<meta property="og:description" content="Convert subnet mask into wildcard mask for ACL and routing configurations.">
+<meta property="og:image" content="https://yourdomain.com/assets/og.png">
+<meta property="og:type" content="website">
 
 <style>
 
@@ -173,6 +188,7 @@ font-size:14px;
 .related a:hover{
 background:#e2e8f0;
 }
+
 </style>
 
 </head>
@@ -181,7 +197,7 @@ background:#e2e8f0;
 
 <div class="header">
 <a href="index.html" style="color:white;text-decoration:none;">
-Network Engineer Toolkit
+NetOpsKit
 </a>
 </div>
 
@@ -195,7 +211,17 @@ Network Engineer Toolkit
 
 <h3>Networking Tools</h3>
 
-<a href="subnet.html">Subnet Calculator</a> <a href="cidr.html">CIDR Summarization</a> <a href="ipv6.html">IPv6 Calculator</a> <a href="iprange.html">IP Range Calculator</a> <a href="vlsm.html">VLSM Calculator</a> <a href="wildcard.html">Wildcard Mask</a> <a href="ipconvert.html">IP Converter</a> <a href="reversedns.html">Reverse DNS</a> <a href="ipclass.html">IP Class Detector</a> <a href="bgp.html">BGP Generator</a> <a href="interface.html">Interface Generator</a>
+<a href="subnet.html">Subnet Calculator</a>
+<a href="cidr.html">CIDR Summarization</a>
+<a href="ipv6.html">IPv6 Calculator</a>
+<a href="iprange.html">IP Range Calculator</a>
+<a href="vlsm.html">VLSM Calculator</a>
+<a href="wildcard.html">Wildcard Mask</a>
+<a href="ipconvert.html">IP Converter</a>
+<a href="reversedns.html">Reverse DNS</a>
+<a href="ipclass.html">IP Class Detector</a>
+<a href="bgp.html">BGP Generator</a>
+<a href="interface.html">Interface Generator</a>
 
 </div>
 
@@ -206,8 +232,6 @@ Network Engineer Toolkit
 <div class="card">
 
 <h2>Wildcard Mask Calculator</h2>
-
-<!-- Example -->
 
 <div class="example">
 
@@ -222,7 +246,6 @@ Subnet Mask: <b>255.255.255.0</b><br><br>
 <input
 id="mask"
 placeholder="Enter Subnet Mask (example: 255.255.255.0)"
-
 >
 
 <button onclick="calculateWildcard()">Calculate</button>
@@ -232,6 +255,11 @@ placeholder="Enter Subnet Mask (example: 255.255.255.0)"
 <button onclick="copyResult()" class="copybtn">
 Copy Result
 </button>
+
+<button onclick="copyShareLink()" class="copybtn">
+🔗 Copy Share Link
+</button>
+
 <div class="related">
 
 <h3>Related Tools</h3>
@@ -253,14 +281,17 @@ Copy Result
 <script>
 
 function fillExample(){
-
 document.getElementById("mask").value="255.255.255.0"
-
 }
 
 async function calculateWildcard(){
 
-let mask=document.getElementById("mask").value
+let mask=document.getElementById("mask").value.trim()
+
+if(!mask){
+alert("Please enter subnet mask")
+return
+}
 
 document.getElementById("result").innerHTML="Calculating..."
 
@@ -287,28 +318,17 @@ function copyResult(){
 
 let text=document.getElementById("result").innerText
 
+if(!text){
+alert("Nothing to copy")
+return
+}
+
 navigator.clipboard.writeText(text)
 
 alert("Result copied to clipboard")
 
 }
-function getURLParameter(name){
-const params=new URLSearchParams(window.location.search)
-return params.get(name)
-}
 
-window.onload=function(){
-
-let mask=getURLParameter("mask")
-
-if(mask){
-
-document.getElementById("mask").value=mask
-calculateWildcard()
-
-}
-
-}
 function copyShareLink(){
 
 let mask=document.getElementById("mask").value
@@ -327,6 +347,7 @@ navigator.clipboard.writeText(url)
 alert("🔗 Share link copied")
 
 }
+
 window.onload=function(){
 
 const params=new URLSearchParams(window.location.search)
@@ -341,6 +362,7 @@ calculateWildcard()
 }
 
 }
+
 </script>
 
 </body>

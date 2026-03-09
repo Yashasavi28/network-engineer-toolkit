@@ -4,7 +4,20 @@
 
 <head>
 
-<title>Reverse DNS Generator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reverse DNS Generator | NetOpsKit</title>
+
+<meta name="description" content="Generate PTR reverse DNS records instantly from IPv4 addresses. Useful for DNS configuration and troubleshooting.">
+
+<link rel="canonical" href="https://yourdomain.com/reversedns.html">
+<link rel="icon" href="assets/favicon.ico">
+
+<meta property="og:title" content="Reverse DNS Generator | NetOpsKit">
+<meta property="og:description" content="Generate PTR reverse DNS records instantly for IPv4 addresses.">
+<meta property="og:image" content="https://yourdomain.com/assets/og.png">
+<meta property="og:type" content="website">
 
 <style>
 
@@ -173,6 +186,7 @@ font-size:14px;
 .related a:hover{
 background:#e2e8f0;
 }
+
 </style>
 
 </head>
@@ -181,7 +195,7 @@ background:#e2e8f0;
 
 <div class="header">
 <a href="index.html" style="color:white;text-decoration:none;">
-Network Engineer Toolkit
+NetOpsKit
 </a>
 </div>
 
@@ -195,7 +209,17 @@ Network Engineer Toolkit
 
 <h3>Networking Tools</h3>
 
-<a href="subnet.html">Subnet Calculator</a> <a href="cidr.html">CIDR Summarization</a> <a href="ipv6.html">IPv6 Calculator</a> <a href="iprange.html">IP Range Calculator</a> <a href="vlsm.html">VLSM Calculator</a> <a href="wildcard.html">Wildcard Mask</a> <a href="ipconvert.html">IP Converter</a> <a href="reversedns.html">Reverse DNS</a> <a href="ipclass.html">IP Class Detector</a> <a href="bgp.html">BGP Generator</a> <a href="interface.html">Interface Generator</a>
+<a href="subnet.html">Subnet Calculator</a>
+<a href="cidr.html">CIDR Summarization</a>
+<a href="ipv6.html">IPv6 Calculator</a>
+<a href="iprange.html">IP Range Calculator</a>
+<a href="vlsm.html">VLSM Calculator</a>
+<a href="wildcard.html">Wildcard Mask</a>
+<a href="ipconvert.html">IP Converter</a>
+<a href="reversedns.html">Reverse DNS</a>
+<a href="ipclass.html">IP Class Detector</a>
+<a href="bgp.html">BGP Generator</a>
+<a href="interface.html">Interface Generator</a>
 
 </div>
 
@@ -206,8 +230,6 @@ Network Engineer Toolkit
 <div class="card">
 
 <h2>Reverse DNS (PTR) Generator</h2>
-
-<!-- Example -->
 
 <div class="example">
 
@@ -222,7 +244,6 @@ IP Address: <b>192.168.1.10</b><br><br>
 <input
 id="ip"
 placeholder="Enter IPv4 Address (example: 192.168.1.10)"
-
 >
 
 <button onclick="generatePTR()">Generate</button>
@@ -231,6 +252,10 @@ placeholder="Enter IPv4 Address (example: 192.168.1.10)"
 
 <button onclick="copyResult()" class="copybtn">
 Copy Result
+</button>
+
+<button onclick="copyShareLink()" class="copybtn">
+🔗 Copy Share Link
 </button>
 
 <div class="related">
@@ -242,6 +267,7 @@ Copy Result
 <a href="subnet.html">Subnet Calculator</a>
 
 </div>
+
 </div>
 
 </div>
@@ -253,14 +279,17 @@ Copy Result
 <script>
 
 function fillExample(){
-
 document.getElementById("ip").value="192.168.1.10"
-
 }
 
 async function generatePTR(){
 
-let ip=document.getElementById("ip").value
+let ip=document.getElementById("ip").value.trim()
+
+if(!ip){
+alert("Enter an IP address")
+return
+}
 
 document.getElementById("result").innerHTML="Generating..."
 
@@ -287,29 +316,17 @@ function copyResult(){
 
 let text=document.getElementById("result").innerText
 
+if(!text){
+alert("Nothing to copy")
+return
+}
+
 navigator.clipboard.writeText(text)
 
 alert("Result copied to clipboard")
 
 }
 
-function getURLParameter(name){
-const params=new URLSearchParams(window.location.search)
-return params.get(name)
-}
-
-window.onload=function(){
-
-let ip=getURLParameter("ip")
-
-if(ip){
-
-document.getElementById("ip").value=ip
-generatePTR()
-
-}
-
-}
 function copyShareLink(){
 
 let ip=document.getElementById("ip").value
@@ -328,6 +345,22 @@ navigator.clipboard.writeText(url)
 alert("🔗 Share link copied")
 
 }
+
+window.onload=function(){
+
+const params=new URLSearchParams(window.location.search)
+
+let ip=params.get("ip")
+
+if(ip){
+
+document.getElementById("ip").value=ip
+generatePTR()
+
+}
+
+}
+
 </script>
 
 </body>
