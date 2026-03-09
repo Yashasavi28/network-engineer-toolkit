@@ -2,9 +2,12 @@ import ipaddress
 
 def summarize_networks(networks):
 
-    net_list = [ipaddress.ip_network(n) for n in networks]
+    net_list = []
 
-    summary = ipaddress.collapse_addresses(net_list)
+    for n in networks:
+        net_list.append(ipaddress.ip_network(n.strip()))
+
+    summary = list(ipaddress.collapse_addresses(net_list))
 
     return {
         "summary": [str(net) for net in summary]
