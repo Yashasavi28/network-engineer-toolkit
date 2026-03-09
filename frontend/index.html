@@ -3,22 +3,16 @@
 <html>
 
 <head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
 
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+<meta charset="UTF-8">
 
-gtag('config', 'G-XXXX');
-</script>
+<title>Network Engineer Toolkit</title>
 
 <meta name="description" content="Free networking tools for engineers including subnet calculator, CIDR summarization, IPv6 subnet calculator and BGP configuration generator.">
 
 <meta name="keywords" content="subnet calculator, CIDR calculator, IPv6 subnet calculator, networking tools, BGP config generator">
 
 <meta name="author" content="Network Engineer Toolkit">
-<title>Network Engineer Toolkit</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -40,7 +34,7 @@ Simple networking tools for engineers worldwide
 
 <div class="max-w-xl mx-auto mt-8">
 
-<input 
+<input
 id="search"
 onkeyup="searchTools()"
 placeholder="Search networking tools..."
@@ -57,12 +51,23 @@ class="w-full p-3 rounded-lg border shadow"
 🔥 Popular Tools
 </h2>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- MOST USED TOOLS -->
 
-<a href="subnet.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+<div class="max-w-6xl mx-auto mt-12 px-6">
 
-<div class="text-3xl mb-3">🌐</div>
+<h2 class="text-xl font-semibold mb-4 text-gray-700">
+🔥 Most Used Tools
+</h2>
 
+<div id="most_used_tools" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+<div class="bg-white p-6 rounded-xl shadow">
+Loading most used tools...
+</div>
+
+</div>
+
+</div>
 <div class="font-semibold text-lg">
 Subnet Calculator
 </div>
@@ -105,7 +110,7 @@ Quickly generate basic BGP neighbor configuration.
 
 </div>
 
-<!-- CATEGORY: IP ADDRESS TOOLS -->
+<!-- IP ADDRESS TOOLS -->
 
 <div class="max-w-6xl mx-auto mt-12 px-6">
 
@@ -130,70 +135,37 @@ Calculate network address, broadcast address and usable hosts.
 Calculate number of IPs between two IPv4 addresses.
 </div>
 </a>
+
 <a href="vlsm.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
-
 <div class="text-3xl mb-3">📐</div>
-
-<div class="font-semibold text-lg">
-VLSM Calculator
-</div>
-
+<div class="font-semibold text-lg">VLSM Calculator</div>
 <div class="text-gray-500 text-sm mt-2">
 Variable Length Subnet Mask calculator for network design.
 </div>
-
 </a>
+
 <a href="wildcard.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
-
 <div class="text-3xl mb-3">🎯</div>
-
-<div class="font-semibold text-lg">
-Wildcard Mask Calculator
-</div>
-
+<div class="font-semibold text-lg">Wildcard Mask Calculator</div>
 <div class="text-gray-500 text-sm mt-2">
 Convert subnet mask into wildcard mask used in Cisco ACL and OSPF.
 </div>
-
 </a>
+
 <a href="ipconvert.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
-
 <div class="text-3xl mb-3">🔢</div>
-
-<div class="font-semibold text-lg">
-IP to Binary Converter
-</div>
-
+<div class="font-semibold text-lg">IP to Binary Converter</div>
 <div class="text-gray-500 text-sm mt-2">
 Convert IPv4 address into binary representation.
 </div>
-
 </a>
+
 <a href="reversedns.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
-
 <div class="text-3xl mb-3">🔁</div>
-
-<div class="font-semibold text-lg">
-Reverse DNS Generator
-</div>
-
+<div class="font-semibold text-lg">Reverse DNS Generator</div>
 <div class="text-gray-500 text-sm mt-2">
 Generate PTR record from IPv4 address for reverse DNS lookup.
 </div>
-
-</a>
-<a href="ipclass.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
-
-<div class="text-3xl mb-3">🧭</div>
-
-<div class="font-semibold text-lg">
-IP Class Detector
-</div>
-
-<div class="text-gray-500 text-sm mt-2">
-Identify IP class, network range and whether address is private or public.
-</div>
-
 </a>
 
 <a href="cidr.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
@@ -212,73 +184,42 @@ Calculate IPv6 network address and prefix information.
 </div>
 </a>
 
+<a href="ipclass.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
+<div class="text-3xl mb-3">🧭</div>
+<div class="font-semibold text-lg">IP Class Detector</div>
+<div class="text-gray-500 text-sm mt-2">
+Identify IP class, network range and whether address is private or public.
 </div>
+</a>
 
 </div>
 
-<!-- CATEGORY: ROUTING TOOLS -->
+</div>
+
+<!-- ROUTING & CONFIG TOOLS -->
 
 <div class="max-w-6xl mx-auto mt-12 px-6">
 
 <h2 class="text-xl font-semibold mb-4 text-gray-700">
-Routing Tools
+Routing & Config Tools
 </h2>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-<a href="bgp.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-
+<a href="bgp.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
 <div class="text-3xl mb-3">📡</div>
-
-<div class="font-semibold text-lg">
-BGP Config Generator
-</div>
-
+<div class="font-semibold text-lg">BGP Config Generator</div>
 <div class="text-gray-500 text-sm mt-2">
 Generate basic BGP neighbor configuration quickly.
 </div>
-
 </a>
 
-</div>
-
-</div>
-
 <a href="interface.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
-
 <div class="text-3xl mb-3">🔧</div>
-
-<div class="font-semibold text-lg">
-Interface Config Generator
-</div>
-
+<div class="font-semibold text-lg">Interface Config Generator</div>
 <div class="text-gray-500 text-sm mt-2">
 Generate Cisco, Juniper and Arista interface configuration instantly.
 </div>
-
-</a>
-<!-- RECENTLY ADDED -->
-
-<div class="max-w-6xl mx-auto mt-12 px-6">
-
-<h2 class="text-xl font-semibold mb-4 text-gray-700">
-✨ Recently Added
-</h2>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-<a href="ipv6.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-
-<div class="text-3xl mb-3">🧬</div>
-
-<div class="font-semibold text-lg">
-IPv6 Subnet Calculator
-</div>
-
-<div class="text-gray-500 text-sm mt-2">
-Calculate IPv6 network information and address count.
-</div>
-
 </a>
 
 </div>
@@ -303,38 +244,11 @@ Loading stats...
 
 </div>
 
-<!-- TOOL STATS -->
-
-<div class="max-w-6xl mx-auto mt-16 px-6">
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-
-<div class="bg-white p-6 rounded-xl shadow">
-<div class="text-3xl font-bold text-blue-600">5+</div>
-<div class="text-gray-600 mt-2">Networking Tools</div>
-</div>
-
-<div class="bg-white p-6 rounded-xl shadow">
-<div class="text-3xl font-bold text-blue-600">FastAPI</div>
-<div class="text-gray-600 mt-2">Powered Backend</div>
-</div>
-
-<div class="bg-white p-6 rounded-xl shadow">
-<div class="text-3xl font-bold text-blue-600">Global</div>
-<div class="text-gray-600 mt-2">Accessible Worldwide</div>
-</div>
-
-</div>
-
-</div>
-
 <!-- FOOTER -->
 
 <div class="bg-gray-900 text-gray-300 mt-16">
 
-<div class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
-
-<div>
+<div class="max-w-6xl mx-auto px-6 py-10 text-center">
 
 <div class="text-white font-semibold text-lg mb-3">
 Network Engineer Toolkit
@@ -344,46 +258,15 @@ Network Engineer Toolkit
 Simple networking tools for engineers. Built for quick calculations and configurations.
 </div>
 
-</div>
+<div class="mt-4">
 
-<div>
-
-<div class="text-white font-semibold mb-3">
-Links
-</div>
-
-<div class="space-y-2 text-sm">
-
-<div><a href="index.html" class="hover:text-white">Home</a></div>
-<div><a href="subnet.html" class="hover:text-white">Subnet Calculator</a></div>
-<div><a href="ipv6.html" class="hover:text-white">IPv6 Calculator</a></div>
-<div><a href="bgp.html" class="hover:text-white">BGP Generator</a></div>
-
-</div>
-
-</div>
-
-<div>
-
-<div class="text-white font-semibold mb-3">
-Project
-</div>
-
-<div class="space-y-2 text-sm">
-
-<div>
-<a href="https://github.com/Yashasavi28/network-engineer-toolkit" class="hover:text-white">
+<a href="https://github.com/Yashasavi28/network-engineer-toolkit" class="hover:text-white mr-4">
 GitHub
 </a>
-</div>
 
-<div>
 <a href="https://network-toolkit-api.onrender.com/docs" class="hover:text-white">
 API Docs
 </a>
-</div>
-
-</div>
 
 </div>
 
@@ -449,8 +332,74 @@ document.getElementById("live_stats").innerHTML="Unable to load stats"
 
 loadStats()
 
+async function loadMostUsedTools(){
+
+try{
+
+const response = await fetch(
+"https://network-toolkit-api.onrender.com/stats"
+)
+
+const data = await response.json()
+
+let tools = data.tools
+
+let sorted = Object.entries(tools).sort((a,b)=>b[1]-a[1])
+
+let html=""
+
+for(let i=0;i<3;i++){
+
+let tool = sorted[i][0]
+
+let name = tool
+
+if(tool=="subnet") name="Subnet Calculator"
+if(tool=="cidr") name="CIDR Summarization"
+if(tool=="ipv6") name="IPv6 Subnet Calculator"
+if(tool=="iprange") name="IP Range Calculator"
+if(tool=="vlsm") name="VLSM Calculator"
+if(tool=="wildcard") name="Wildcard Mask Calculator"
+if(tool=="ipconvert") name="IP Converter"
+if(tool=="reversedns") name="Reverse DNS Generator"
+if(tool=="ipclass") name="IP Class Detector"
+if(tool=="bgp") name="BGP Generator"
+if(tool=="interface") name="Interface Config Generator"
+
+html+=`
+
+<div class="bg-white p-6 rounded-xl shadow hover:shadow-lg">
+
+<div class="text-2xl font-bold text-blue-600 mb-2">
+#${i+1}
+</div>
+
+<div class="font-semibold text-lg">
+${name}
+</div>
+
+<div class="text-gray-500 text-sm mt-2">
+Used ${sorted[i][1]} times
+</div>
+
+</div>
+
+`
+
+}
+
+document.getElementById("most_used_tools").innerHTML = html
+
+}catch(err){
+
+document.getElementById("most_used_tools").innerHTML="Unable to load data"
+
+}
+
+}
+
+loadMostUsedTools()
 </script>
 
 </body>
-
 </html>
