@@ -18,12 +18,24 @@
 
 </head>
 
-<body class="bg-gray-100">
+<body id="body" class="bg-gray-100 transition-colors duration-300"></body>
 
 <!-- HEADER -->
 
-<div class="bg-gray-900 text-white p-5 text-center text-xl font-bold">
+<div class="bg-gray-900 text-white p-5 flex justify-between items-center">
+
+<div class="text-xl font-bold">
 Network Engineer Toolkit
+</div>
+
+<button
+onclick="toggleDarkMode()"
+class="bg-gray-700 px-3 py-1 rounded hover:bg-gray-600"
+id="darkToggle"
+>
+🌙 Dark
+</button>
+
 </div>
 
 <div class="text-center text-gray-500 mt-2">
@@ -407,6 +419,50 @@ document.getElementById("most_used_tools").innerHTML="Unable to load data"
 
 loadMostUsedTools()
 
+function toggleDarkMode(){
+
+let body=document.getElementById("body")
+
+if(body.classList.contains("bg-gray-100")){
+
+body.classList.remove("bg-gray-100")
+body.classList.add("bg-gray-900")
+
+document.getElementById("darkToggle").innerText="☀️ Light"
+
+localStorage.setItem("theme","dark")
+
+}else{
+
+body.classList.remove("bg-gray-900")
+body.classList.add("bg-gray-100")
+
+document.getElementById("darkToggle").innerText="🌙 Dark"
+
+localStorage.setItem("theme","light")
+
+}
+
+}
+
+function loadTheme(){
+
+let saved=localStorage.getItem("theme")
+
+if(saved=="dark"){
+
+let body=document.getElementById("body")
+
+body.classList.remove("bg-gray-100")
+body.classList.add("bg-gray-900")
+
+document.getElementById("darkToggle").innerText="☀️ Light"
+
+}
+
+}
+
+loadTheme()
 </script>
 
 </body>
