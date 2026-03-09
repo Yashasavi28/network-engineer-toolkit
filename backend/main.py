@@ -8,6 +8,7 @@ from tools.ipv6 import calculate_ipv6
 from tools.vlsm import calculate_vlsm
 from tools.wildcard import calculate_wildcard
 from tools.ipconvert import ip_to_binary
+from tools.reversedns import reverse_dns
 
 tool_usage = {
     "subnet": 0,
@@ -88,6 +89,13 @@ def ipconvert(ip: str):
     tool_usage["ipconvert"] = tool_usage.get("ipconvert", 0) + 1
 
     return ip_to_binary(ip)
+
+@app.get("/reversedns")
+def reversedns(ip: str):
+
+    tool_usage["reversedns"] = tool_usage.get("reversedns", 0) + 1
+
+    return reverse_dns(ip)
 
 @app.get("/stats")
 def stats():
