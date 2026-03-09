@@ -1,5 +1,5 @@
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware # type: ignore
+from fastapi import FastAPI # type: ignore
 from tools.subnet import calculate_subnet
 from tools.bgp import generate_bgp_config
 from tools.iprange import calculate_ip_range
