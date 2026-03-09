@@ -3,7 +3,7 @@ from fastapi import FastAPI # type: ignore
 from tools.subnet import calculate_subnet
 from tools.bgp import generate_bgp_config
 from tools.iprange import calculate_ip_range
-
+from tools.cidr import summarize_networks
 
 app = FastAPI()
 
@@ -29,3 +29,10 @@ def bgp(local_as: int, neighbor_ip: str, peer_as: int):
 @app.get("/iprange")
 def iprange(start_ip: str, end_ip: str):
     return calculate_ip_range(start_ip, end_ip)
+
+@app.get("/cidr")
+def cidr(networks: str):
+
+    net_list = networks.split(",")
+
+    return summarize_networks(net_list)
