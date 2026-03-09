@@ -18,6 +18,10 @@
 Network Engineer Toolkit
 </div>
 
+<div class="text-center text-gray-500 mt-2">
+Simple networking tools for engineers worldwide
+</div>
+
 <!-- SEARCH -->
 
 <div class="max-w-xl mx-auto mt-8">
@@ -31,17 +35,57 @@ class="w-full p-3 rounded-lg border shadow"
 
 </div>
 
+<!-- POPULAR TOOLS -->
+
+<div class="max-w-6xl mx-auto mt-12 px-6">
+
+<h2 class="text-xl font-semibold mb-4 text-gray-700">
+🔥 Popular Tools
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+<a href="subnet.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
+
+<div class="text-3xl mb-3">🌐</div>
+
+<div class="font-semibold text-lg">
+Subnet Calculator
+</div>
+
+<div class="text-gray-500 text-sm mt-2">
+Most used tool for calculating network and broadcast address.
+</div>
+
+</a>
+
+<a href="bgp.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
+
+<div class="text-3xl mb-3">📡</div>
+
+<div class="font-semibold text-lg">
+BGP Config Generator
+</div>
+
+<div class="text-gray-500 text-sm mt-2">
+Quickly generate basic BGP neighbor configuration.
+</div>
+
+</a>
+
+</div>
+
+</div>
+
 <!-- CATEGORY: IP TOOLS -->
 
-<div class="max-w-6xl mx-auto mt-10 px-6">
+<div class="max-w-6xl mx-auto mt-12 px-6">
 
 <h2 class="text-xl font-semibold mb-4 text-gray-700">
 IP Address Tools
 </h2>
 
-<div id="tools" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-<!-- SUBNET -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
 <a href="subnet.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
 
@@ -56,8 +100,6 @@ Calculate network address, broadcast address and usable hosts.
 </div>
 
 </a>
-
-<!-- IP RANGE -->
 
 <a href="iprange.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
 
@@ -87,8 +129,6 @@ Routing Tools
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-<!-- BGP -->
-
 <a href="bgp.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
 
 <div class="text-3xl mb-3">📡</div>
@@ -99,6 +139,34 @@ BGP Config Generator
 
 <div class="text-gray-500 text-sm mt-2">
 Generate basic BGP neighbor configuration quickly.
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+<!-- RECENTLY ADDED -->
+
+<div class="max-w-6xl mx-auto mt-12 px-6">
+
+<h2 class="text-xl font-semibold mb-4 text-gray-700">
+✨ Recently Added
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+<a href="iprange.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
+
+<div class="text-3xl mb-3">📊</div>
+
+<div class="font-semibold text-lg">
+IP Range Calculator
+</div>
+
+<div class="text-gray-500 text-sm mt-2">
+Calculate number of IPv4 addresses between two IPs.
 </div>
 
 </a>
@@ -153,30 +221,6 @@ Accessible Worldwide
 
 </div>
 
-<script>
-
-function searchTools(){
-
-let input=document.getElementById("search").value.toLowerCase()
-
-let tools=document.getElementsByClassName("tool")
-
-for(let i=0;i<tools.length;i++){
-
-let text=tools[i].innerText.toLowerCase()
-
-if(text.includes(input)){
-tools[i].style.display="block"
-}else{
-tools[i].style.display="none"
-}
-
-}
-
-}
-
-</script>
-
 <!-- FOOTER -->
 
 <div class="bg-gray-900 text-gray-300 mt-16">
@@ -190,8 +234,7 @@ Network Engineer Toolkit
 </div>
 
 <div class="text-sm text-gray-400">
-Simple networking tools for engineers.
-Built for quick calculations and configurations.
+Simple networking tools for engineers. Built for quick calculations and configurations.
 </div>
 
 </div>
@@ -257,6 +300,31 @@ API Docs
 </div>
 
 </div>
+
+<script>
+
+function searchTools(){
+
+let input=document.getElementById("search").value.toLowerCase()
+
+let tools=document.getElementsByClassName("tool")
+
+for(let i=0;i<tools.length;i++){
+
+let text=tools[i].innerText.toLowerCase()
+
+if(text.includes(input)){
+tools[i].style.display="block"
+}else{
+tools[i].style.display="none"
+}
+
+}
+
+}
+
+</script>
+
 </body>
 
 </html>
