@@ -4,6 +4,7 @@ from tools.subnet import calculate_subnet
 from tools.bgp import generate_bgp_config
 from tools.iprange import calculate_ip_range
 from tools.cidr import summarize_networks
+from tools.ipv6 import calculate_ipv6
 
 app = FastAPI()
 
@@ -36,3 +37,7 @@ def cidr(networks: str):
     net_list = networks.split(",")
 
     return summarize_networks(net_list)
+
+@app.get("/ipv6")
+def ipv6(network: str):
+    return calculate_ipv6(network)
