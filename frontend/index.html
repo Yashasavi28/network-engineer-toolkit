@@ -3,7 +3,21 @@
 <html>
 
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
 
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-XXXX');
+</script>
+
+<meta name="description" content="Free networking tools for engineers including subnet calculator, CIDR summarization, IPv6 subnet calculator and BGP configuration generator.">
+
+<meta name="keywords" content="subnet calculator, CIDR calculator, IPv6 subnet calculator, networking tools, BGP config generator">
+
+<meta name="author" content="Network Engineer Toolkit">
 <title>Network Engineer Toolkit</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -115,6 +129,19 @@ Calculate network address, broadcast address and usable hosts.
 <div class="text-gray-500 text-sm mt-2">
 Calculate number of IPs between two IPv4 addresses.
 </div>
+</a>
+<a href="vlsm.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg">
+
+<div class="text-3xl mb-3">📐</div>
+
+<div class="font-semibold text-lg">
+VLSM Calculator
+</div>
+
+<div class="text-gray-500 text-sm mt-2">
+Variable Length Subnet Mask calculator for network design.
+</div>
+
 </a>
 
 <a href="cidr.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition">

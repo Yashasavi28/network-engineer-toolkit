@@ -5,6 +5,7 @@ from tools.bgp import generate_bgp_config
 from tools.iprange import calculate_ip_range
 from tools.cidr import summarize_networks
 from tools.ipv6 import calculate_ipv6
+from tools.vlsm import calculate_vlsm
 
 tool_usage = {
     "subnet": 0,
@@ -65,6 +66,13 @@ def ipv6(network: str):
 
     return calculate_ipv6(network)
 
+@app.get("/vlsm")
+def vlsm(network: str, hosts: str):
+
+    tool_usage["vlsm"] = tool_usage.get("vlsm", 0) + 1
+
+    return calculate_vlsm(network, hosts)
+
 @app.get("/stats")
 def stats():
 
@@ -76,3 +84,14 @@ def stats():
         "tools": tool_usage,
         "total_visits": total_visits
     }
+    
+visitors = 0
+
+@app.get("/visit")
+def visit():
+
+    global visitors
+
+    visitors += 1
+
+    return {"visitors": visitors}

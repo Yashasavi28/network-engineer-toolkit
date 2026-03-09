@@ -1,0 +1,19 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+<loc>https://network-engineer-toolkit-site.vercel.app/</loc>
+</url>
+
+<url>
+<loc>https://network-engineer-toolkit-site.vercel.app/subnet.html</loc>
+</url>
+
+<url>
+<loc>https://network-engineer-toolkit-site.vercel.app/cidr.html</loc>
+</url>
+
+<url>
+<loc>https://network-engineer-toolkit-site.vercel.app/ipv6.html</loc>
+</url>
+
+</urlset>
