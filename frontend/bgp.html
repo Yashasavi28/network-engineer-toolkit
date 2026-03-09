@@ -67,11 +67,28 @@ border-radius:6px;
 white-space:pre-line;
 }
 
+.copybtn{
+margin-top:10px;
+background:#111827;
+}
+
+.copybtn:hover{
+background:black;
+}
+
 .back{
 margin-bottom:20px;
 display:block;
 color:#2563eb;
 text-decoration:none;
+}
+
+.example{
+background:#eaf2ff;
+border:1px solid #cbd5e1;
+padding:12px;
+border-radius:6px;
+margin-bottom:15px;
 }
 
 </style>
@@ -90,6 +107,22 @@ BGP Config Generator
 
 <div class="card">
 
+<!-- Example -->
+
+<div class="example">
+
+<b>Example</b><br>
+
+Local AS: <b>65001</b><br>
+Neighbor IP: <b>10.0.0.2</b><br>
+Peer AS: <b>65002</b><br><br>
+
+<button onclick="fillExample()">Use Example</button>
+
+</div>
+
+<!-- Inputs -->
+
 <input id="local_as" placeholder="Local AS (example: 65001)">
 <input id="neighbor_ip" placeholder="Neighbor IP (example: 10.0.0.2)">
 <input id="peer_as" placeholder="Peer AS (example: 65002)">
@@ -98,11 +131,27 @@ BGP Config Generator
 
 <div id="result" class="result"></div>
 
+<button
+onclick="copyResult()"
+class="copybtn"
+
+>
+
+Copy Result </button>
+
 </div>
 
 </div>
 
 <script>
+
+function fillExample(){
+
+document.getElementById("local_as").value="65001"
+document.getElementById("neighbor_ip").value="10.0.0.2"
+document.getElementById("peer_as").value="65002"
+
+}
 
 async function generate(){
 
@@ -129,6 +178,16 @@ document.getElementById("result").innerText=data.config
 document.getElementById("result").innerHTML="API Error"
 
 }
+
+}
+
+function copyResult(){
+
+let text=document.getElementById("result").innerText
+
+navigator.clipboard.writeText(text)
+
+alert("Config copied to clipboard")
 
 }
 

@@ -65,11 +65,28 @@ padding:15px;
 border-radius:6px;
 }
 
+.copybtn{
+margin-top:10px;
+background:#111827;
+}
+
+.copybtn:hover{
+background:black;
+}
+
 .back{
 margin-bottom:20px;
 display:block;
 color:#2563eb;
 text-decoration:none;
+}
+
+.example{
+background:#eaf2ff;
+border:1px solid #cbd5e1;
+padding:12px;
+border-radius:6px;
+margin-bottom:15px;
 }
 
 </style>
@@ -88,17 +105,48 @@ Subnet Calculator
 
 <div class="card">
 
-<input id="network" placeholder="Example: 192.168.1.0/24">
+<!-- Example -->
+
+<div class="example">
+
+<b>Example</b><br>
+Network: <b>192.168.1.0/24</b><br><br>
+
+<button onclick="fillExample()">Use Example</button>
+
+</div>
+
+<!-- Input -->
+
+<input
+id="network"
+placeholder="Enter Network (example: 192.168.1.0/24)"
+
+>
 
 <button onclick="calculate()">Calculate</button>
 
 <div id="result" class="result"></div>
+
+<button
+onclick="copyResult()"
+class="copybtn"
+
+>
+
+Copy Result </button>
 
 </div>
 
 </div>
 
 <script>
+
+function fillExample(){
+
+document.getElementById("network").value="192.168.1.0/24"
+
+}
 
 async function calculate(){
 
@@ -124,6 +172,16 @@ document.getElementById("result").innerHTML=
 document.getElementById("result").innerHTML="API Error"
 
 }
+
+}
+
+function copyResult(){
+
+let text=document.getElementById("result").innerText
+
+navigator.clipboard.writeText(text)
+
+alert("Result copied to clipboard")
 
 }
 

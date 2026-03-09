@@ -65,11 +65,28 @@ padding:15px;
 border-radius:6px;
 }
 
+.copybtn{
+margin-top:10px;
+background:#111827;
+}
+
+.copybtn:hover{
+background:black;
+}
+
 .back{
 margin-bottom:20px;
 display:block;
 color:#2563eb;
 text-decoration:none;
+}
+
+.example{
+background:#eaf2ff;
+border:1px solid #cbd5e1;
+padding:12px;
+border-radius:6px;
+margin-bottom:15px;
 }
 
 </style>
@@ -88,6 +105,21 @@ IP Range Calculator
 
 <div class="card">
 
+<!-- Example -->
+
+<div class="example">
+
+<b>Example</b><br>
+
+Start IP: <b>192.168.1.10</b><br>
+End IP: <b>192.168.1.20</b><br><br>
+
+<button onclick="fillExample()">Use Example</button>
+
+</div>
+
+<!-- Inputs -->
+
 <input id="start_ip" placeholder="Start IP (example: 192.168.1.10)">
 <input id="end_ip" placeholder="End IP (example: 192.168.1.20)">
 
@@ -95,11 +127,26 @@ IP Range Calculator
 
 <div id="result" class="result"></div>
 
+<button
+onclick="copyResult()"
+class="copybtn"
+
+>
+
+Copy Result </button>
+
 </div>
 
 </div>
 
 <script>
+
+function fillExample(){
+
+document.getElementById("start_ip").value="192.168.1.10"
+document.getElementById("end_ip").value="192.168.1.20"
+
+}
 
 async function calculate(){
 
@@ -124,6 +171,16 @@ document.getElementById("result").innerHTML=
 document.getElementById("result").innerHTML="API Error"
 
 }
+
+}
+
+function copyResult(){
+
+let text=document.getElementById("result").innerText
+
+navigator.clipboard.writeText(text)
+
+alert("Result copied to clipboard")
 
 }
 
