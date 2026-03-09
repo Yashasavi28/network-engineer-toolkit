@@ -13,6 +13,7 @@ tool_usage = {
     "ipv6": 0,
     "bgp": 0
 }
+total_visits = 0
 
 app = FastAPI()
 
@@ -67,4 +68,11 @@ def ipv6(network: str):
 @app.get("/stats")
 def stats():
 
-    return tool_usage
+    global total_visits
+
+    total_visits = sum(tool_usage.values())
+
+    return {
+        "tools": tool_usage,
+        "total_visits": total_visits
+    }

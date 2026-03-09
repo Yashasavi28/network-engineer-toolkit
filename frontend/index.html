@@ -216,7 +216,23 @@ Calculate IPv6 network information and address count.
 </div>
 
 </div>
+<!-- LIVE TOOL STATS -->
 
+<div class="max-w-6xl mx-auto mt-16 px-6">
+
+<h2 class="text-xl font-semibold mb-4 text-gray-700">
+📊 Live Toolkit Usage
+</h2>
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<div id="live_stats">
+Loading stats...
+</div>
+
+</div>
+
+</div>
 <!-- TOOL STATS -->
 
 <div class="max-w-6xl mx-auto mt-16 px-6">
@@ -370,7 +386,38 @@ tools[i].style.display="none"
 }
 
 }
+async function loadStats(){
 
+try{
+
+const response=await fetch(
+"https://network-toolkit-api.onrender.com/stats"
+)
+
+const data=await response.json()
+
+let html=""
+
+for(const tool in data.tools){
+
+html+= "<p><b>"+tool+"</b>: "+data.tools[tool]+" uses</p>"
+
+}
+
+html+="<hr class='my-2'>"
+html+="<p><b>Total Tool Uses:</b> "+data.total_visits+"</p>"
+
+document.getElementById("live_stats").innerHTML=html
+
+}catch(err){
+
+document.getElementById("live_stats").innerHTML="Unable to load stats"
+
+}
+
+}
+
+loadStats()
 </script>
 
 </body>
