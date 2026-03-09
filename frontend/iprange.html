@@ -233,6 +233,10 @@ End IP: <b>192.168.1.20</b><br><br>
 Copy Result
 </button>
 
+<button type="button" onclick="copyShareLink()" class="copybtn">
+🔗 Copy Share Link
+</button>
+
 <div class="related">
 
 <h3>Related Tools</h3>
@@ -310,6 +314,41 @@ if(start && end){
 document.getElementById("start_ip").value=start
 document.getElementById("end_ip").value=end
 
+calculate()
+
+}
+
+}
+function copyShareLink(){
+
+let start=document.getElementById("start_ip").value
+let end=document.getElementById("end_ip").value
+
+if(!start || !end){
+alert("Enter IP range first")
+return
+}
+
+let base=window.location.href.split("?")[0]
+
+let url=base+"?start_ip="+encodeURIComponent(start)+"&end_ip="+encodeURIComponent(end)
+
+navigator.clipboard.writeText(url)
+
+alert("🔗 Share link copied")
+
+}
+window.onload=function(){
+
+const params=new URLSearchParams(window.location.search)
+
+let start=params.get("start_ip")
+let end=params.get("end_ip")
+
+if(start && end){
+
+document.getElementById("start_ip").value=start
+document.getElementById("end_ip").value=end
 calculate()
 
 }

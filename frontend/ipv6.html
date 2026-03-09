@@ -311,6 +311,38 @@ calculateIPv6()
 }
 
 }
+function copyShareLink(){
+
+let network=document.getElementById("network").value
+
+if(!network){
+alert("Enter IPv6 network")
+return
+}
+
+let base=window.location.href.split("?")[0]
+
+let url=base+"?network="+encodeURIComponent(network)
+
+navigator.clipboard.writeText(url)
+
+alert("🔗 Share link copied")
+
+}
+window.onload=function(){
+
+const params=new URLSearchParams(window.location.search)
+
+let network=params.get("network")
+
+if(network){
+
+document.getElementById("network").value=network
+calculateIPv6()
+
+}
+
+}
 </script>
 
 </body>

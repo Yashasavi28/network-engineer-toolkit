@@ -326,6 +326,42 @@ calculateVLSM()
 }
 
 }
+function copyShareLink(){
+
+let network=document.getElementById("network").value
+let hosts=document.getElementById("hosts").value
+
+if(!network || !hosts){
+alert("Enter network and hosts")
+return
+}
+
+let base=window.location.href.split("?")[0]
+
+let url=base+"?network="+encodeURIComponent(network)+"&hosts="+encodeURIComponent(hosts)
+
+navigator.clipboard.writeText(url)
+
+alert("🔗 Share link copied")
+
+}
+window.onload=function(){
+
+const params=new URLSearchParams(window.location.search)
+
+let network=params.get("network")
+let hosts=params.get("hosts")
+
+if(network && hosts){
+
+document.getElementById("network").value=network
+document.getElementById("hosts").value=hosts
+
+calculateVLSM()
+
+}
+
+}
 </script>
 
 </body>

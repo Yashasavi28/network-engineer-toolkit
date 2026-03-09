@@ -249,6 +249,10 @@ rows="4"
 Copy Result
 </button>
 
+<button type="button" onclick="copyShareLink()" class="copybtn">
+🔗 Copy Share Link
+</button>
+
 <div class="related">
 
 <h3>Related Tools</h3>
@@ -322,6 +326,35 @@ if(networks){
 document.getElementById("networks").value=networks
 summarize()
 
+}
+
+}
+function copyShareLink(){
+
+let networks=document.getElementById("networks").value
+
+if(!networks){
+alert("Enter networks first")
+return
+}
+
+let base=window.location.href.split("?")[0]
+
+let url=base+"?networks="+encodeURIComponent(networks)
+
+navigator.clipboard.writeText(url)
+
+alert("🔗 Share link copied")
+
+}
+window.onload=function(){
+
+const params=new URLSearchParams(window.location.search)
+let networks=params.get("networks")
+
+if(networks){
+document.getElementById("networks").value=networks
+summarize()
 }
 
 }

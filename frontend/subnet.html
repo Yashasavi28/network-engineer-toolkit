@@ -234,6 +234,10 @@ placeholder="Enter Network (example: 192.168.1.0/24)"
 Copy Result
 </button>
 
+<button type="button" onclick="copyShareLink()" class="copybtn">
+🔗 Copy Share Link
+</button>
+
 <div class="related">
 
 <h3>Related Tools</h3>
@@ -243,6 +247,7 @@ Copy Result
 <a href="iprange.html">IP Range Calculator</a>
 
 </div>
+
 </div>
 
 </div>
@@ -311,6 +316,25 @@ document.getElementById("network").value=network
 calculate()
 
 }
+
+}
+
+function copyShareLink(){
+
+let network=document.getElementById("network").value
+
+if(!network){
+alert("Enter a network first")
+return
+}
+
+let base=window.location.href.split("?")[0]
+
+let url=base + "?network=" + encodeURIComponent(network)
+
+navigator.clipboard.writeText(url)
+
+alert("Share link copied")
 
 }
 </script>

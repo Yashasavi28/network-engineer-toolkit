@@ -309,6 +309,38 @@ calculateWildcard()
 }
 
 }
+function copyShareLink(){
+
+let mask=document.getElementById("mask").value
+
+if(!mask){
+alert("Enter subnet mask first")
+return
+}
+
+let base=window.location.href.split("?")[0]
+
+let url=base+"?mask="+encodeURIComponent(mask)
+
+navigator.clipboard.writeText(url)
+
+alert("🔗 Share link copied")
+
+}
+window.onload=function(){
+
+const params=new URLSearchParams(window.location.search)
+
+let mask=params.get("mask")
+
+if(mask){
+
+document.getElementById("mask").value=mask
+calculateWildcard()
+
+}
+
+}
 </script>
 
 </body>

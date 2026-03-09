@@ -313,6 +313,38 @@ detectClass()
 }
 
 }
+function copyShareLink(){
+
+let ip=document.getElementById("ip").value
+
+if(!ip){
+alert("Enter IP first")
+return
+}
+
+let base=window.location.href.split("?")[0]
+
+let url=base+"?ip="+encodeURIComponent(ip)
+
+navigator.clipboard.writeText(url)
+
+alert("🔗 Share link copied")
+
+}
+window.onload=function(){
+
+const params=new URLSearchParams(window.location.search)
+
+let ip=params.get("ip")
+
+if(ip){
+
+document.getElementById("ip").value=ip
+detectClass()
+
+}
+
+}
 </script>
 
 </body>
