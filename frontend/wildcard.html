@@ -292,7 +292,23 @@ navigator.clipboard.writeText(text)
 alert("Result copied to clipboard")
 
 }
+function getURLParameter(name){
+const params=new URLSearchParams(window.location.search)
+return params.get(name)
+}
 
+window.onload=function(){
+
+let mask=getURLParameter("mask")
+
+if(mask){
+
+document.getElementById("mask").value=mask
+calculateWildcard()
+
+}
+
+}
 </script>
 
 </body>

@@ -314,6 +314,28 @@ alert("Config copied to clipboard")
 
 }
 
+function getURLParameter(name){
+const params=new URLSearchParams(window.location.search)
+return params.get(name)
+}
+
+window.onload=function(){
+
+let local=getURLParameter("local_as")
+let neighbor=getURLParameter("neighbor_ip")
+let peer=getURLParameter("peer_as")
+
+if(local && neighbor && peer){
+
+document.getElementById("local_as").value=local
+document.getElementById("neighbor_ip").value=neighbor
+document.getElementById("peer_as").value=peer
+
+generate()
+
+}
+
+}
 </script>
 
 </body>

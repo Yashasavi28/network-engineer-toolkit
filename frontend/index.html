@@ -351,6 +351,7 @@ document.getElementById("live_stats").innerHTML="Unable to load stats"
 
 loadStats()
 
+
 async function loadMostUsedTools(){
 
 try{
@@ -367,41 +368,50 @@ let sorted = Object.entries(tools).sort((a,b)=>b[1]-a[1])
 
 let html=""
 
+const toolInfo={
+subnet:{name:"Subnet Calculator",icon:"🌐",link:"subnet.html"},
+cidr:{name:"CIDR Summarization",icon:"🧮",link:"cidr.html"},
+ipv6:{name:"IPv6 Subnet Calculator",icon:"🧬",link:"ipv6.html"},
+iprange:{name:"IP Range Calculator",icon:"📊",link:"iprange.html"},
+vlsm:{name:"VLSM Calculator",icon:"📐",link:"vlsm.html"},
+wildcard:{name:"Wildcard Mask Calculator",icon:"🎯",link:"wildcard.html"},
+ipconvert:{name:"IP Converter",icon:"🔢",link:"ipconvert.html"},
+reversedns:{name:"Reverse DNS Generator",icon:"🔁",link:"reversedns.html"},
+ipclass:{name:"IP Class Detector",icon:"🧭",link:"ipclass.html"},
+bgp:{name:"BGP Generator",icon:"📡",link:"bgp.html"},
+interface:{name:"Interface Config Generator",icon:"🔧",link:"interface.html"}
+}
+
 for(let i=0;i<3;i++){
 
 let tool = sorted[i][0]
+let uses = sorted[i][1]
 
-let name = tool
-
-if(tool=="subnet") name="Subnet Calculator"
-if(tool=="cidr") name="CIDR Summarization"
-if(tool=="ipv6") name="IPv6 Subnet Calculator"
-if(tool=="iprange") name="IP Range Calculator"
-if(tool=="vlsm") name="VLSM Calculator"
-if(tool=="wildcard") name="Wildcard Mask Calculator"
-if(tool=="ipconvert") name="IP Converter"
-if(tool=="reversedns") name="Reverse DNS Generator"
-if(tool=="ipclass") name="IP Class Detector"
-if(tool=="bgp") name="BGP Generator"
-if(tool=="interface") name="Interface Config Generator"
+let info=toolInfo[tool]
 
 html+=`
 
-<div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="${info.link}" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block">
 
-<div class="text-2xl font-bold text-blue-600 mb-2">
+<div class="flex justify-between items-center">
+
+<div class="text-3xl">${info.icon}</div>
+
+<div class="text-sm font-bold text-blue-600">
 #${i+1}
 </div>
 
-<div class="font-semibold text-lg">
-${name}
+</div>
+
+<div class="font-semibold text-lg mt-3">
+${info.name}
 </div>
 
 <div class="text-gray-500 text-sm mt-2">
-Used ${sorted[i][1]} times
+Used ${uses} times
 </div>
 
-</div>
+</a>
 
 `
 
@@ -418,6 +428,7 @@ document.getElementById("most_used_tools").innerHTML="Unable to load data"
 }
 
 loadMostUsedTools()
+
 
 function toggleDarkMode(){
 

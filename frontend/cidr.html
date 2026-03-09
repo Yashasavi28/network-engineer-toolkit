@@ -308,7 +308,23 @@ navigator.clipboard.writeText(text)
 alert("Result copied to clipboard")
 
 }
+function getURLParameter(name){
+const params=new URLSearchParams(window.location.search)
+return params.get(name)
+}
 
+window.onload=function(){
+
+let networks=getURLParameter("networks")
+
+if(networks){
+
+document.getElementById("networks").value=networks
+summarize()
+
+}
+
+}
 </script>
 
 </body>

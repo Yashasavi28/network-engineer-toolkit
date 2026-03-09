@@ -294,7 +294,23 @@ navigator.clipboard.writeText(text)
 alert("Result copied to clipboard")
 
 }
+function getURLParameter(name){
+const params=new URLSearchParams(window.location.search)
+return params.get(name)
+}
 
+window.onload=function(){
+
+let network=getURLParameter("network")
+
+if(network){
+
+document.getElementById("network").value=network
+calculateIPv6()
+
+}
+
+}
 </script>
 
 </body>

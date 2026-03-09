@@ -299,6 +299,30 @@ alert("Config copied to clipboard")
 
 }
 
+function getURLParameter(name){
+const params=new URLSearchParams(window.location.search)
+return params.get(name)
+}
+
+window.onload=function(){
+
+let intf=getURLParameter("interface")
+let ip=getURLParameter("ip")
+let mask=getURLParameter("mask")
+let desc=getURLParameter("description")
+
+if(intf && ip && mask){
+
+document.getElementById("interface").value=intf
+document.getElementById("ip").value=ip
+document.getElementById("mask").value=mask
+document.getElementById("description").value=desc
+
+generateConfig()
+
+}
+
+}
 </script>
 
 </body>

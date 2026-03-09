@@ -306,7 +306,26 @@ navigator.clipboard.writeText(text)
 alert("Result copied to clipboard")
 
 }
+function getURLParameter(name){
+const params=new URLSearchParams(window.location.search)
+return params.get(name)
+}
 
+window.onload=function(){
+
+let network=getURLParameter("network")
+let hosts=getURLParameter("hosts")
+
+if(network && hosts){
+
+document.getElementById("network").value=network
+document.getElementById("hosts").value=hosts
+
+calculateVLSM()
+
+}
+
+}
 </script>
 
 </body>

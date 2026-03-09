@@ -295,6 +295,26 @@ alert("Result copied to clipboard")
 
 }
 
+function getURLParameter(name){
+const params=new URLSearchParams(window.location.search)
+return params.get(name)
+}
+
+window.onload=function(){
+
+let start=getURLParameter("start_ip")
+let end=getURLParameter("end_ip")
+
+if(start && end){
+
+document.getElementById("start_ip").value=start
+document.getElementById("end_ip").value=end
+
+calculate()
+
+}
+
+}
 </script>
 
 </body>
