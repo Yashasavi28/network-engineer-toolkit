@@ -1,0 +1,41 @@
+{
+  "subnet": {
+    "title": "Subnet Calculator",
+    "slug": "subnet-calculator",
+    "icon": "🌐",
+    "file": "subnet.html",
+    "category": "ip-tools"
+  },
+
+  "cidr": {
+    "title": "CIDR Summarization",
+    "slug": "cidr-summarization",
+    "icon": "🧮",
+    "file": "cidr.html",
+    "category": "ip-tools"
+  },
+
+  "iprange": {
+    "title": "IP Range Calculator",
+    "slug": "ip-range-calculator",
+    "icon": "📊",
+    "file": "iprange.html",
+    "category": "ip-tools"
+  },
+
+  "vlsm": {
+    "title": "VLSM Calculator",
+    "slug": "vlsm-calculator",
+    "icon": "📐",
+    "file": "vlsm.html",
+    "category": "ip-tools"
+  },
+
+  "bgp": {
+    "title": "BGP Config Generator",
+    "slug": "bgp-config-generator",
+    "icon": "📡",
+    "file": "bgp.html",
+    "category": "routing"
+  }
+}

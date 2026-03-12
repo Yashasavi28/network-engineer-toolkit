@@ -14,6 +14,10 @@ from backend.tools.ipconvert import ip_to_binary
 from backend.tools.reversedns import reverse_dns
 from backend.tools.ipclass import detect_ip_class
 from backend.tools.interface import generate_interface_config
+import json
+
+with open("frontend/tools.json") as f:
+    TOOLS = json.load(f)
 
 
 app = FastAPI()
@@ -126,6 +130,15 @@ def serve_page(page_name: str):
         return FileResponse(file_path)
 
     return {"error": "Page not found"}
+
+@app.get("/{tool_slug}")
+def tool_page(tool_slug: str):
+
+    for tool in TOOLS.values():
+        if tool["slug"] == tool_slug:
+            return FileResponse(f"frontend/{tool['file']}")
+
+    return FileResponse("frontend/404.html")
 # -----------------------------
 # API endpoints
 # -----------------------------
