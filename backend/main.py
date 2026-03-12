@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import os
-
 from backend.tools.subnet import calculate_subnet
 from backend.tools.bgp import generate_bgp_config
 from backend.tools.iprange import calculate_ip_range
@@ -38,6 +37,7 @@ app.add_middleware(
 # -----------------------------
 
 app.mount("/assets", StaticFiles(directory="frontend/assets"), name="assets")
+app.mount("/layout", StaticFiles(directory="frontend/layout"), name="layout")
 
 
 # -----------------------------
@@ -72,56 +72,52 @@ def serve_home():
     response.headers["Cache-Control"] = "no-cache"
     return response
 
-
-# -----------------------------
-# SEO tool pages
-# -----------------------------
-
-@app.get("/subnet-calculator")
-def subnet_seo():
-    return FileResponse("frontend/subnet.html")
-
-
-@app.get("/cidr-summarization")
-def cidr_seo():
-    return FileResponse("frontend/cidr.html")
-
-
-@app.get("/ip-range-calculator")
-def iprange_seo():
-    return FileResponse("frontend/iprange.html")
-
-
-@app.get("/vlsm-calculator")
-def vlsm_seo():
-    return FileResponse("frontend/vlsm.html")
-
-
-@app.get("/wildcard-mask-calculator")
-def wildcard_seo():
-    return FileResponse("frontend/wildcard.html")
-
-
-@app.get("/ip-to-binary-converter")
-def ipconvert_seo():
-    return FileResponse("frontend/ipconvert.html")
-
-
-@app.get("/reverse-dns-generator")
-def reversedns_seo():
-    return FileResponse("frontend/reversedns.html")
-
-
-@app.get("/ipv6-subnet-calculator")
-def ipv6_seo():
-    return FileResponse("frontend/ipv6.html")
-
-
 # -----------------------------
 # Generic HTML route
 # -----------------------------
 
-@app.get("/{page_name}.html")
+
+@app.get("/subnet-calculator")
+def subnet_page():
+    return FileResponse("frontend/subnet.html")
+
+@app.get("/cidr-summarization")
+def cidr_page():
+    return FileResponse("frontend/cidr.html")
+
+@app.get("/ip-range-calculator")
+def iprange_page():
+    return FileResponse("frontend/iprange.html")
+
+@app.get("/vlsm-calculator")
+def vlsm_page():
+    return FileResponse("frontend/vlsm.html")
+
+@app.get("/wildcard-mask-calculator")
+def wildcard_page():
+    return FileResponse("frontend/wildcard.html")
+
+@app.get("/ip-to-binary-converter")
+def ipconvert_page():
+    return FileResponse("frontend/ipconvert.html")
+
+@app.get("/reverse-dns-generator")
+def reversedns_page():
+    return FileResponse("frontend/reversedns.html")
+
+@app.get("/ipv6-subnet-calculator")
+def ipv6_page():
+    return FileResponse("frontend/ipv6.html")
+
+@app.get("/ip-class-detector")
+def ipclass_page():
+    return FileResponse("frontend/ipclass.html")
+
+@app.get("/interface-config-generator")
+def interface_page():
+    return FileResponse("frontend/interface.html")
+
+@app.get("/page/{page_name}")
 def serve_page(page_name: str):
 
     file_path = f"frontend/{page_name}.html"
@@ -130,8 +126,6 @@ def serve_page(page_name: str):
         return FileResponse(file_path)
 
     return {"error": "Page not found"}
-
-
 # -----------------------------
 # API endpoints
 # -----------------------------
@@ -191,18 +185,12 @@ def ipclass(ip: str):
 def interface(interface: str, ip: str, mask: str, description: str):
     return generate_interface_config(interface, ip, mask, description)
 
-@app.get("/ipclass")
-def ipclass_page():
-    return FileResponse("frontend/ipclass.html")
 
 
 @app.get("/bgp-config-generator")
 def bgp_seo():
     return FileResponse("frontend/bgp.html")
 
-@app.get("/subnet-calculator")
-def subnet_page():
-    return FileResponse("subnet.html")
 # -----------------------------
 # Stats API
 # -----------------------------
