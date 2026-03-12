@@ -212,17 +212,17 @@ NetOpsKit
 
 <h3>Networking Tools</h3>
 
-<a href="subnet.html">Subnet Calculator</a>
-<a href="cidr.html">CIDR Summarization</a>
-<a href="ipv6.html">IPv6 Calculator</a>
-<a href="iprange.html">IP Range Calculator</a>
-<a href="vlsm.html">VLSM Calculator</a>
-<a href="wildcard.html">Wildcard Mask</a>
-<a href="ipconvert.html">IP Converter</a>
-<a href="reversedns.html">Reverse DNS</a>
-<a href="ipclass.html">IP Class Detector</a>
-<a href="bgp.html">BGP Generator</a>
-<a href="interface.html">Interface Generator</a>
+<a href="/subnet-calculator">Subnet Calculator</a>
+<a href="/cidr-summarization">CIDR Summarization</a>
+<a href="/ipv6-subnet-calculator">IPv6 Calculator</a>
+<a href="/ip-range-calculator">IP Range Calculator</a>
+<a href="/vlsm-calculator">VLSM Calculator</a>
+<a href="/wildcard-mask-calculator">Wildcard Mask</a>
+<a href="/ip-to-binary-converter">IP Converter</a>
+<a href="/reverse-dns-generator">Reverse DNS</a>
+<a href="/ipclass">IP Class Detector</a>
+<a href="/bgp-config-generator">BGP Generator</a>
+<a href="/interface.html">Interface Generator</a>
 
 </div>
 
@@ -264,9 +264,9 @@ Copy Result
 
 <h3>Related Tools</h3>
 
-<a href="subnet.html">Subnet Calculator</a>
-<a href="reversedns.html">Reverse DNS Generator</a>
-<a href="iprange.html">IP Range Calculator</a>
+<a href="/subnet-calculator">Subnet Calculator</a>
+<a href="/reverse-dns-generator">Reverse DNS Generator</a>
+<a href="/ip-range-calculator">IP Range Calculator</a>
 
 </div>
 
@@ -298,7 +298,7 @@ document.getElementById("result").innerHTML="Checking..."
 try{
 
 const response=await fetch(
-"https://network-toolkit-api.onrender.com/ipclass?ip="+encodeURIComponent(ip)
+"/ipclass?ip="+encodeURIComponent(ip)
 )
 
 const data=await response.json()

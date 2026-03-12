@@ -71,6 +71,8 @@ def serve_home():
     response = FileResponse("frontend/index.html")
     response.headers["Cache-Control"] = "no-cache"
     return response
+
+
 # -----------------------------
 # SEO tool pages
 # -----------------------------
@@ -79,29 +81,45 @@ def serve_home():
 def subnet_seo():
     return FileResponse("frontend/subnet.html")
 
+
 @app.get("/cidr-summarization")
 def cidr_seo():
     return FileResponse("frontend/cidr.html")
+
 
 @app.get("/ip-range-calculator")
 def iprange_seo():
     return FileResponse("frontend/iprange.html")
 
+
 @app.get("/vlsm-calculator")
 def vlsm_seo():
     return FileResponse("frontend/vlsm.html")
+
 
 @app.get("/wildcard-mask-calculator")
 def wildcard_seo():
     return FileResponse("frontend/wildcard.html")
 
+
 @app.get("/ip-to-binary-converter")
 def ipconvert_seo():
     return FileResponse("frontend/ipconvert.html")
 
+
 @app.get("/reverse-dns-generator")
 def reversedns_seo():
     return FileResponse("frontend/reversedns.html")
+
+
+@app.get("/ipv6-subnet-calculator")
+def ipv6_seo():
+    return FileResponse("frontend/ipv6.html")
+
+
+# -----------------------------
+# Generic HTML route
+# -----------------------------
 
 @app.get("/{page_name}.html")
 def serve_page(page_name: str):
@@ -120,93 +138,67 @@ def serve_page(page_name: str):
 
 @app.get("/subnet")
 def subnet(network: str):
-
-    tool_usage["subnet"] += 1
-
     return calculate_subnet(network)
 
 
 @app.get("/bgp")
 def bgp(local_as: int, neighbor_ip: str, peer_as: int):
-
-    tool_usage["bgp"] += 1
-
     return generate_bgp_config(local_as, neighbor_ip, peer_as)
 
 
 @app.get("/iprange")
 def iprange(start_ip: str, end_ip: str):
-
-    tool_usage["iprange"] += 1
-
     return calculate_ip_range(start_ip, end_ip)
 
 
 @app.get("/cidr")
 def cidr(networks: str):
-
-    tool_usage["cidr"] += 1
-
     net_list = networks.split(",")
-
     return summarize_networks(net_list)
 
 
 @app.get("/ipv6")
 def ipv6(network: str):
-
-    tool_usage["ipv6"] += 1
-
     return calculate_ipv6(network)
 
 
 @app.get("/vlsm")
 def vlsm(network: str, hosts: str):
-
-    tool_usage["vlsm"] += 1
-
     return calculate_vlsm(network, hosts)
 
 
 @app.get("/wildcard")
 def wildcard(mask: str):
-
-    tool_usage["wildcard"] += 1
-
     return calculate_wildcard(mask)
 
 
 @app.get("/ipconvert")
 def ipconvert(ip: str):
-
-    tool_usage["ipconvert"] += 1
-
     return ip_to_binary(ip)
 
 
 @app.get("/reversedns")
 def reversedns(ip: str):
-
-    tool_usage["reversedns"] += 1
-
     return reverse_dns(ip)
 
 
 @app.get("/ipclass")
 def ipclass(ip: str):
-
-    tool_usage["ipclass"] += 1
-
     return detect_ip_class(ip)
 
 
 @app.get("/interface")
 def interface(interface: str, ip: str, mask: str, description: str):
-
-    tool_usage["interface"] += 1
-
     return generate_interface_config(interface, ip, mask, description)
 
+@app.get("/ipclass")
+def ipclass_page():
+    return FileResponse("frontend/ipclass.html")
+
+
+@app.get("/bgp-config-generator")
+def bgp_seo():
+    return FileResponse("frontend/bgp.html")
 
 # -----------------------------
 # Stats API
@@ -237,6 +229,7 @@ def visit():
     visitors += 1
 
     return {"visitors": visitors}
+
 
 # -----------------------------
 # Tool tracking API
