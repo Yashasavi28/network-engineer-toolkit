@@ -1,0 +1,73 @@
+{
+  "subnet": {
+    "title": "Subnet Calculator",
+    "slug": "subnet-calculator",
+    "icon": "🌐",
+    "file": "subnet.html",
+    "category": "ip-tools"
+  },
+
+  "cidr": {
+    "title": "CIDR Summarization",
+    "slug": "cidr-summarization",
+    "icon": "🧮",
+    "file": "cidr.html",
+    "category": "ip-tools"
+  },
+
+  "iprange": {
+    "title": "IP Range Calculator",
+    "slug": "ip-range-calculator",
+    "icon": "📊",
+    "file": "iprange.html",
+    "category": "ip-tools"
+  },
+
+  "vlsm": {
+    "title": "VLSM Calculator",
+    "slug": "vlsm-calculator",
+    "icon": "📐",
+    "file": "vlsm.html",
+    "category": "ip-tools"
+  },
+
+  "wildcard": {
+    "title": "Wildcard Mask Calculator",
+    "slug": "wildcard-mask-calculator",
+    "icon": "🎭",
+    "file": "wildcard.html",
+    "category": "ip-tools"
+  },
+
+  "ipconvert": {
+    "title": "IP Converter",
+    "slug": "ip-converter",
+    "icon": "🔄",
+    "file": "ipconvert.html",
+    "category": "ip-tools"
+  },
+
+  "ipclass": {
+    "title": "IP Class Detector",
+    "slug": "ip-class-detector",
+    "icon": "📦",
+    "file": "ipclass.html",
+    "category": "ip-tools"
+  },
+
+  "ipv6": {
+    "title": "IPv6 Calculator",
+    "slug": "ipv6-calculator",
+    "icon": "🌍",
+    "file": "ipv6.html",
+    "category": "ipv6-tools"
+  },
+
+  "reversedns": {
+    "title": "Reverse DNS Generator",
+    "slug": "reverse-dns",
+    "icon": "🔍",
+    "file": "reversedns.html",
+    "category": "dns-tools"
+  }
+}

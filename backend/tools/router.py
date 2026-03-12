@@ -1,36 +1,45 @@
 from fastapi import APIRouter
 from fastapi.responses import FileResponse
-import os
+from pathlib import Path
 import json
 
 router = APIRouter()
 
-FRONTEND_DIR = "frontend"
+# project root
+BASE_DIR = Path(__file__).resolve().parents[2]
 
-with open(os.path.join(FRONTEND_DIR, "tools.json")) as f:
+# frontend folder
+FRONTEND_DIR = BASE_DIR / "frontend"
+
+# load tools.json
+with open(FRONTEND_DIR / "tools.json") as f:
     TOOLS = json.load(f)
 
-# Create fast slug lookup
-SLUG_MAP = {tool["slug"]: tool for tool in TOOLS.values()}
 
+# -----------------------------
+# Homepage
+# -----------------------------
 
 @router.get("/")
 def homepage():
-    return FileResponse(
-        os.path.join(FRONTEND_DIR, "index.html")
-    )
+    return FileResponse(FRONTEND_DIR / "index.html")
 
+
+# -----------------------------
+# Dynamic Tool Loader
+# -----------------------------
 
 @router.get("/{tool_slug}")
 def load_tool(tool_slug: str):
 
-    tool = SLUG_MAP.get(tool_slug)
+    for tool in TOOLS.values():
 
-    if tool:
-        return FileResponse(
-            os.path.join(FRONTEND_DIR, tool["file"])
-        )
+        if tool["slug"] == tool_slug:
+
+            return FileResponse(
+                FRONTEND_DIR / tool["file"]
+            )
 
     return FileResponse(
-        os.path.join(FRONTEND_DIR, "404.html")
+        FRONTEND_DIR / "404.html"
     )

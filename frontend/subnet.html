@@ -303,7 +303,11 @@ const response = await fetch(
 "/subnet?network=" + encodeURIComponent(network)
 )
 
-const data=await response.json()
+if(!response.ok){
+throw new Error("API request failed")
+}
+
+const data = await response.json()
 
 document.getElementById("result").innerHTML=
 "<b>Network Address:</b> "+data.network_address+"<br>"+
@@ -311,6 +315,8 @@ document.getElementById("result").innerHTML=
 "<b>Total Hosts:</b> "+data.total_hosts
 
 }catch(err){
+
+console.error(err)
 
 document.getElementById("result").innerHTML="API Error"
 
