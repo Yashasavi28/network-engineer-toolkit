@@ -200,6 +200,9 @@ def ipclass_page():
 def bgp_seo():
     return FileResponse("frontend/bgp.html")
 
+@app.get("/subnet-calculator")
+def subnet_page():
+    return FileResponse("subnet.html")
 # -----------------------------
 # Stats API
 # -----------------------------

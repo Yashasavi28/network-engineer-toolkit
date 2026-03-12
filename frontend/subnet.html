@@ -12,13 +12,13 @@
 
 <meta name="description" content="Free subnet calculator for network engineers. Calculate network address, broadcast address and usable hosts instantly.">
 
-<link rel="canonical" href="https://network-toolkit-api.onrender.com/subnet-calculator">
+<link rel="canonical" href="https://netopskit.com/subnet-calculator">
 
 <link rel="icon" href="assets/favicon.ico">
 
 <meta property="og:title" content="Subnet Calculator | NetOpsKit">
 <meta property="og:description" content="Free subnet calculator for network engineers.">
-<meta property="og:image" content="https://network-toolkit-api.onrender.com/assets/og-image.png">
+<meta property="og:image" content="https://netopskit.com/assets/og-image.png">
 <meta property="og:type" content="website">
 
 <script type="application/ld+json">
@@ -26,7 +26,7 @@
 "@context":"https://schema.org",
 "@type":"WebApplication",
 "name":"Subnet Calculator",
-"url":"https://network-toolkit-api.onrender.com/subnet-calculator",
+"url":"https://netopskit.com/subnet-calculator"
 "description":"Free subnet calculator for network engineers to calculate network address, broadcast address and usable hosts."
 }
 </script>
@@ -62,7 +62,6 @@ padding:30px;
 .layout{
 display:flex;
 gap:30px;
-flex-wrap:wrap;
 }
 
 /* SIDEBAR */
@@ -206,35 +205,16 @@ background:#e2e8f0;
 
 <body>
 
-<div class="header">
-<a href="index.html" style="color:white;text-decoration:none;">
-NetOpsKit
-</a>
-</div>
+
+<div id="header"></div>
 
 <div class="container">
 
 <div class="layout">
 
-<!-- SIDEBAR -->
+<div id="sidebar"></div>
 
-<div class="sidebar">
 
-<h3>Networking Tools</h3>
-
-<a href="subnet.html">Subnet Calculator</a>
-<a href="cidr.html">CIDR Summarization</a>
-<a href="ipv6.html">IPv6 Calculator</a>
-<a href="iprange.html">IP Range Calculator</a>
-<a href="vlsm.html">VLSM Calculator</a>
-<a href="wildcard.html">Wildcard Mask</a>
-<a href="ipconvert.html">IP Converter</a>
-<a href="reversedns.html">Reverse DNS</a>
-<a href="ipclass.html">IP Class Detector</a>
-<a href="bgp.html">BGP Generator</a>
-<a href="interface.html">Interface Generator</a>
-
-</div>
 
 <!-- MAIN TOOL -->
 
@@ -242,7 +222,7 @@ NetOpsKit
 
 <div class="card">
 
-<h1>Subnet Calculator</h1>
+<h1>🌐 Subnet Calculator</h1>
 
 <div class="example">
 
@@ -394,7 +374,7 @@ alert("Share link copied")
 fetch("/track?tool=subnet").catch(()=>{})
 
 </script>
-
+<script defer src="/assets/layout.js"></script>
 </body>
 
 </html>
