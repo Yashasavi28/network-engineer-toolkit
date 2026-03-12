@@ -39,3 +39,10 @@
     "category": "routing"
   }
 }
+
+"prefix": {
+"title":"Prefix Converter",
+"slug":"prefix-converter",
+"icon":"🔢",
+"file":"prefix.html"
+}

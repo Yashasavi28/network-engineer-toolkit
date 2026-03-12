@@ -15,7 +15,17 @@ from backend.tools.ipconvert import ip_to_binary
 from backend.tools.reversedns import reverse_dns
 from backend.tools.ipclass import detect_ip_class
 from backend.tools.interface import generate_interface_config
-
+from backend.tools.prefix import prefix_to_mask
+from backend.tools.broadcast import calculate_broadcast
+from backend.tools.subnetviz import subnet_visualizer
+from backend.tools.dnslookup import dns_lookup
+from backend.tools.whoislookup import whois_lookup
+from backend.tools.asnlookup import asn_lookup
+from backend.tools.portlookup import port_lookup
+from backend.tools.mtu import mtu_calculator
+from backend.tools.tcpwindow import tcp_window
+from backend.tools.bandwidth import bandwidth_calc
+from backend.tools.latency import latency_calc
 
 app = FastAPI()
 
@@ -124,6 +134,49 @@ def ipclass(ip: str):
 def interface(interface: str, ip: str, mask: str, description: str):
     return generate_interface_config(interface, ip, mask, description)
 
+@app.get("/prefix")
+def prefix(prefix: int):
+    return prefix_to_mask(prefix)
+
+@app.get("/broadcast")
+def broadcast(network: str):
+    return calculate_broadcast(network)
+
+@app.get("/subnetviz")
+def subnetviz(network: str):
+    return subnet_visualizer(network)
+
+@app.get("/dnslookup")
+def dnslookup(domain: str):
+    return dns_lookup(domain)
+
+@app.get("/whois")
+def whois(domain: str):
+    return whois_lookup(domain)
+
+@app.get("/asn")
+def asn(asn: int):
+    return asn_lookup(asn)
+
+@app.get("/port")
+def port(port: int):
+    return port_lookup(port)
+
+@app.get("/mtu")
+def mtu(mtu: int):
+    return mtu_calculator(mtu)
+
+@app.get("/tcpwindow")
+def tcpwindow(bandwidth: int, latency: int):
+    return tcp_window(bandwidth, latency)
+
+@app.get("/bandwidth")
+def bandwidth(size: int, speed: int):
+    return bandwidth_calc(size, speed)
+
+@app.get("/latency")
+def latency(distance: int):
+    return latency_calc(distance)
 
 # -----------------------------
 # Stats API
