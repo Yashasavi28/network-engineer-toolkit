@@ -4,7 +4,22 @@
 
 <head>
 
-<title>BGP Config Generator</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BGP Config Generator | NetOpsKit</title>
+
+<meta name="description" content="Generate BGP neighbor configuration instantly. Free BGP config generator for network engineers supporting Cisco, Juniper and Arista routers.">
+
+<link rel="canonical" href="https://network-toolkit-api.onrender.com/bgp-config-generator">
+
+<link rel="icon" href="assets/favicon.ico">
+
+<meta property="og:title" content="BGP Config Generator | NetOpsKit">
+<meta property="og:description" content="Free BGP configuration generator for network engineers.">
+<meta property="og:image" content="https://network-toolkit-api.onrender.com/assets/og-image.png">
+<meta property="og:type" content="website">
 
 <style>
 
@@ -72,7 +87,7 @@ background:#f1f5f9;
 transform:translateX(3px);
 }
 
-/* MAIN AREA */
+/* MAIN */
 
 .main{
 flex:1;
@@ -119,6 +134,7 @@ border-radius:6px;
 cursor:pointer;
 font-size:14px;
 transition:all 0.2s ease;
+margin-top:8px;
 }
 
 button:hover{
@@ -129,12 +145,11 @@ background:#1d4ed8;
 
 .result{
 margin-top:20px;
-background:#111827;
-color:#e5e7eb;
+background:#f1f5f9;
 padding:15px;
 border-radius:6px;
-white-space:pre-line;
 font-family:monospace;
+white-space:pre-line;
 }
 
 /* COPY BUTTON */
@@ -142,6 +157,7 @@ font-family:monospace;
 .copybtn{
 margin-top:10px;
 background:#111827;
+color:white;
 }
 
 .copybtn:hover{
@@ -224,7 +240,11 @@ NetOpsKit
 
 <div class="card">
 
-<h2>BGP Config Generator</h2>
+<h1>BGP Config Generator</h1>
+
+<div class="example">
+Generate basic BGP neighbor configuration by entering Local AS, Neighbor IP and Peer AS.
+</div>
 
 <div class="example">
 
@@ -251,7 +271,7 @@ Peer AS: <b>65002</b><br><br>
 <div id="result" class="result"></div>
 
 <button onclick="copyResult()" class="copybtn">
-Copy
+Copy Result
 </button>
 
 <div class="related">
@@ -296,7 +316,7 @@ document.getElementById("result").innerHTML="Generating..."
 try{
 
 const response=await fetch(
-"/bgp?local_as="+
+"https://network-toolkit-api.onrender.com/bgp?local_as="+
 encodeURIComponent(local_as)+
 "&neighbor_ip="+encodeURIComponent(neighbor_ip)+
 "&peer_as="+encodeURIComponent(peer_as)
@@ -314,19 +334,18 @@ document.getElementById("result").innerHTML="API Error"
 
 }
 
-function copyResult(event){
+function copyResult(){
 
 let text=document.getElementById("result").innerText
 
+if(!text){
+alert("Nothing to copy")
+return
+}
+
 navigator.clipboard.writeText(text)
 
-let btn = event.target
-
-btn.innerText = "Copied!"
-
-setTimeout(()=>{
-btn.innerText = "Copy"
-},2000)
+alert("Config copied")
 
 }
 
@@ -350,7 +369,7 @@ let url=base+
 
 navigator.clipboard.writeText(url)
 
-alert("🔗 Share link copied")
+alert("Share link copied")
 
 }
 
@@ -373,7 +392,9 @@ generate()
 }
 
 }
-fetch("/track?tool=bgp")
+
+fetch("/track?tool=bgp").catch(()=>{})
+
 </script>
 
 </body>

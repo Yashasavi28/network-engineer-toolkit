@@ -9,25 +9,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Subnet Calculator | NetOpsKit Networking Tool</title>
-<div class="example">
 
-Subnet Calculator helps network engineers quickly determine network address,
-broadcast address and usable hosts from any CIDR block.
-
-Example: 192.168.1.0/24
-
-</div>
-<meta name="description" content="Free subnet calculator for network engineers. Quickly calculate network address, broadcast address and usable hosts.">
 <meta name="description" content="Free subnet calculator for network engineers. Calculate network address, broadcast address and usable hosts instantly.">
 
-<link rel="canonical" href="https://yourdomain.com/subnet.html">
+<link rel="canonical" href="https://network-toolkit-api.onrender.com/subnet-calculator">
 
 <link rel="icon" href="assets/favicon.ico">
 
 <meta property="og:title" content="Subnet Calculator | NetOpsKit">
 <meta property="og:description" content="Free subnet calculator for network engineers.">
-<meta property="og:image" content="https://yourdomain.com/assets/og.png">
+<meta property="og:image" content="https://network-toolkit-api.onrender.com/assets/og-image.png">
 <meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Subnet Calculator",
+"url":"https://network-toolkit-api.onrender.com/subnet-calculator",
+"description":"Free subnet calculator for network engineers to calculate network address, broadcast address and usable hosts."
+}
+</script>
 
 <style>
 
@@ -138,6 +140,7 @@ border-radius:6px;
 cursor:pointer;
 font-size:14px;
 transition:all 0.2s ease;
+margin-top:8px;
 }
 
 button:hover{
@@ -239,7 +242,16 @@ NetOpsKit
 
 <div class="card">
 
-<h2>Subnet Calculator</h2>
+<h1>Subnet Calculator</h1>
+
+<div class="example">
+
+Subnet Calculator helps network engineers quickly determine network address,
+broadcast address and usable hosts from any CIDR block.
+
+Example: 192.168.1.0/24
+
+</div>
 
 <div class="example">
 
@@ -255,6 +267,7 @@ Network: <b>192.168.1.0/24</b><br><br>
 
 <input
 id="network"
+type="text"
 placeholder="example: 192.168.1.0/24"
 >
 
@@ -377,7 +390,9 @@ navigator.clipboard.writeText(url)
 alert("Share link copied")
 
 }
-fetch("/track?tool=subnet")
+
+fetch("/track?tool=subnet").catch(()=>{})
+
 </script>
 
 </body>

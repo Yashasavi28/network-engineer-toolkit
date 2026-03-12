@@ -7,17 +7,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Interface Config Generator | NetOpsKit</title>
+<title>Interface Config Generator | NetOpsKit Networking Tool</title>
 
 <meta name="description" content="Generate Cisco, Juniper and Arista interface configurations instantly. Useful for network engineers configuring routers and switches.">
 
-<link rel="canonical" href="https://yourdomain.com/interface.html">
+<link rel="canonical" href="https://network-toolkit-api.onrender.com/interface-generator">
 <link rel="icon" href="assets/favicon.ico">
 
 <meta property="og:title" content="Interface Config Generator | NetOpsKit">
 <meta property="og:description" content="Generate Cisco, Juniper and Arista interface configurations instantly.">
-<meta property="og:image" content="https://yourdomain.com/assets/og.png">
+<meta property="og:image" content="https://network-toolkit-api.onrender.com/assets/og-image.png">
 <meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Interface Config Generator",
+"url":"https://network-toolkit-api.onrender.com/interface-generator",
+"description":"Generate Cisco, Juniper and Arista interface configuration instantly."
+}
+</script>
 
 <style>
 
@@ -120,6 +130,7 @@ border-radius:6px;
 cursor:pointer;
 font-size:14px;
 transition:all 0.2s ease;
+margin-top:8px;
 }
 
 button:hover{
@@ -141,7 +152,7 @@ margin-top:5px;
 }
 
 .copybtn{
-margin-top:6px;
+margin-top:8px;
 background:#111827;
 color:white;
 padding:6px 10px;
@@ -152,6 +163,15 @@ cursor:pointer;
 
 .copybtn:hover{
 background:black;
+}
+
+.example{
+background:#eaf2ff;
+border:1px solid #cbd5e1;
+padding:12px;
+border-radius:6px;
+margin-bottom:15px;
+font-size:14px;
 }
 
 .related{
@@ -219,7 +239,12 @@ NetOpsKit
 
 <div class="card">
 
-<h2>Interface Config Generator</h2>
+<h1>Interface Config Generator</h1>
+
+<div class="example">
+Generate interface configuration for Cisco, Juniper and Arista devices instantly.
+Enter interface name, IP address and subnet mask to generate configuration snippets.
+</div>
 
 <input id="interface" placeholder="Interface (example: GigabitEthernet0/0)">
 <input id="ip" placeholder="IP Address (example: 10.0.0.1)">
@@ -230,9 +255,11 @@ NetOpsKit
 Generate Config
 </button>
 
-<button onclick="copyShareLink()" style="margin-top:10px">
+<button onclick="copyShareLink()">
 🔗 Copy Share Link
 </button>
+
+<div id="result" class="result"></div>
 
 <div class="related">
 
@@ -243,8 +270,6 @@ Generate Config
 <a href="iprange.html">IP Range Calculator</a>
 
 </div>
-
-<div id="result" class="result"></div>
 
 </div>
 
@@ -332,7 +357,7 @@ let url=base+"?interface="+encodeURIComponent(intf)+"&ip="+encodeURIComponent(ip
 
 navigator.clipboard.writeText(url)
 
-alert("🔗 Share link copied")
+alert("Share link copied")
 
 }
 
@@ -357,7 +382,9 @@ generateConfig()
 }
 
 }
-fetch("/track?tool=interface")
+
+fetch("/track?tool=interface").catch(()=>{})
+
 </script>
 
 </body>

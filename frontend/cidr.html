@@ -4,7 +4,32 @@
 
 <head>
 
-<title>CIDR Summarization Tool</title>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CIDR Summarization | NetOpsKit Networking Tool</title>
+
+<meta name="description" content="Free CIDR summarization tool for network engineers. Combine multiple networks into a single summarized CIDR block instantly.">
+
+<link rel="canonical" href="https://network-toolkit-api.onrender.com/cidr-summarization">
+
+<link rel="icon" href="assets/favicon.ico">
+
+<meta property="og:title" content="CIDR Summarization | NetOpsKit">
+<meta property="og:description" content="Free CIDR summarization tool for network engineers.">
+<meta property="og:image" content="https://network-toolkit-api.onrender.com/assets/og-image.png">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"CIDR Summarization Tool",
+"url":"https://network-toolkit-api.onrender.com/cidr-summarization",
+"description":"Combine multiple networks into a summarized CIDR block."
+}
+</script>
 
 <style>
 
@@ -120,6 +145,7 @@ border-radius:6px;
 cursor:pointer;
 font-size:14px;
 transition:all 0.2s ease;
+margin-top:8px;
 }
 
 button:hover{
@@ -141,6 +167,7 @@ font-family:monospace;
 .copybtn{
 margin-top:10px;
 background:#111827;
+color:white;
 }
 
 .copybtn:hover{
@@ -184,6 +211,7 @@ font-size:14px;
 .related a:hover{
 background:#e2e8f0;
 }
+
 </style>
 
 </head>
@@ -222,7 +250,14 @@ NetOpsKit
 
 <div class="card">
 
-<h2>CIDR Summarization Tool</h2>
+<h1>CIDR Summarization</h1>
+
+<div class="example">
+
+CIDR summarization combines multiple IP networks into a single summarized CIDR block.
+Example: combining 192.168.0.0/24 and 192.168.1.0/24.
+
+</div>
 
 <div class="example">
 
@@ -312,6 +347,11 @@ function copyResult(){
 
 let text=document.getElementById("result").innerText
 
+if(!text){
+alert("Nothing to copy")
+return
+}
+
 navigator.clipboard.writeText(text)
 
 alert("Result copied to clipboard")
@@ -333,7 +373,7 @@ let url=base+"?networks="+encodeURIComponent(networks)
 
 navigator.clipboard.writeText(url)
 
-alert("🔗 Share link copied")
+alert("Share link copied")
 
 }
 
@@ -351,7 +391,9 @@ summarize()
 }
 
 }
-fetch("/track?tool=cidr")
+
+fetch("/track?tool=cidr").catch(()=>{})
+
 </script>
 
 </body>
