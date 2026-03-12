@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
-import os
+
+from backend.tools.router import router
+
 from backend.tools.subnet import calculate_subnet
 from backend.tools.bgp import generate_bgp_config
 from backend.tools.iprange import calculate_ip_range
@@ -14,14 +15,9 @@ from backend.tools.ipconvert import ip_to_binary
 from backend.tools.reversedns import reverse_dns
 from backend.tools.ipclass import detect_ip_class
 from backend.tools.interface import generate_interface_config
-import json
-
-with open("frontend/tools.json") as f:
-    TOOLS = json.load(f)
 
 
 app = FastAPI()
-
 
 # -----------------------------
 # CORS
@@ -35,14 +31,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # -----------------------------
-# Serve frontend assets
+# Static frontend folders
 # -----------------------------
 
 app.mount("/assets", StaticFiles(directory="frontend/assets"), name="assets")
 app.mount("/layout", StaticFiles(directory="frontend/layout"), name="layout")
 
+# -----------------------------
+# Include page router
+# -----------------------------
+
+app.include_router(router)
 
 # -----------------------------
 # Tool usage tracking
@@ -65,80 +65,6 @@ tool_usage = {
 total_visits = 0
 visitors = 0
 
-
-# -----------------------------
-# Serve frontend pages
-# -----------------------------
-
-@app.get("/")
-def serve_home():
-    response = FileResponse("frontend/index.html")
-    response.headers["Cache-Control"] = "no-cache"
-    return response
-
-# -----------------------------
-# Generic HTML route
-# -----------------------------
-
-
-@app.get("/subnet-calculator")
-def subnet_page():
-    return FileResponse("frontend/subnet.html")
-
-@app.get("/cidr-summarization")
-def cidr_page():
-    return FileResponse("frontend/cidr.html")
-
-@app.get("/ip-range-calculator")
-def iprange_page():
-    return FileResponse("frontend/iprange.html")
-
-@app.get("/vlsm-calculator")
-def vlsm_page():
-    return FileResponse("frontend/vlsm.html")
-
-@app.get("/wildcard-mask-calculator")
-def wildcard_page():
-    return FileResponse("frontend/wildcard.html")
-
-@app.get("/ip-to-binary-converter")
-def ipconvert_page():
-    return FileResponse("frontend/ipconvert.html")
-
-@app.get("/reverse-dns-generator")
-def reversedns_page():
-    return FileResponse("frontend/reversedns.html")
-
-@app.get("/ipv6-subnet-calculator")
-def ipv6_page():
-    return FileResponse("frontend/ipv6.html")
-
-@app.get("/ip-class-detector")
-def ipclass_page():
-    return FileResponse("frontend/ipclass.html")
-
-@app.get("/interface-config-generator")
-def interface_page():
-    return FileResponse("frontend/interface.html")
-
-@app.get("/page/{page_name}")
-def serve_page(page_name: str):
-
-    file_path = f"frontend/{page_name}.html"
-
-    if os.path.exists(file_path):
-        return FileResponse(file_path)
-
-    return {"error": "Page not found"}
-
-@app.get("/{tool_slug}")
-def tool_page(tool_slug: str):
-
-    for tool in TOOLS.values():
-        if tool["slug"] == tool_slug:
-            return FileResponse(f"frontend/{tool['file']}")
-
-    return FileResponse("frontend/404.html")
 # -----------------------------
 # API endpoints
 # -----------------------------
@@ -199,11 +125,6 @@ def interface(interface: str, ip: str, mask: str, description: str):
     return generate_interface_config(interface, ip, mask, description)
 
 
-
-@app.get("/bgp-config-generator")
-def bgp_seo():
-    return FileResponse("frontend/bgp.html")
-
 # -----------------------------
 # Stats API
 # -----------------------------
@@ -245,4 +166,7 @@ def track(tool: str):
     if tool in tool_usage:
         tool_usage[tool] += 1
 
-    return {"status": "tracked", "tool": tool}
+    return {
+        "status": "tracked",
+        "tool": tool
+    }

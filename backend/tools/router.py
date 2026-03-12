@@ -1,38 +1,36 @@
 from fastapi import APIRouter
 from fastapi.responses import FileResponse
 import os
+import json
 
 router = APIRouter()
 
-# mapping between url and html file
-TOOLS = {
-    "subnet-calculator": "subnet.html",
-    "cidr-summarization": "cidr.html",
-    "ipv6-subnet-calculator": "ipv6.html",
-    "ip-range-calculator": "iprange.html",
-    "vlsm-calculator": "vlsm.html",
-    "wildcard-mask-calculator": "wildcard.html",
-    "ip-to-binary-converter": "ipconvert.html",
-    "reverse-dns-generator": "reversedns.html",
-    "ip-class-detector": "ipclass.html",
-    "bgp-config-generator": "bgp.html",
-    "interface-config-generator": "interface.html",
-}
-
 FRONTEND_DIR = "frontend"
+
+with open(os.path.join(FRONTEND_DIR, "tools.json")) as f:
+    TOOLS = json.load(f)
+
+# Create fast slug lookup
+SLUG_MAP = {tool["slug"]: tool for tool in TOOLS.values()}
 
 
 @router.get("/")
 def homepage():
-    return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+    return FileResponse(
+        os.path.join(FRONTEND_DIR, "index.html")
+    )
 
 
-@router.get("/{tool_name}")
-def load_tool(tool_name: str):
+@router.get("/{tool_slug}")
+def load_tool(tool_slug: str):
 
-    if tool_name in TOOLS:
+    tool = SLUG_MAP.get(tool_slug)
+
+    if tool:
         return FileResponse(
-            os.path.join(FRONTEND_DIR, TOOLS[tool_name])
+            os.path.join(FRONTEND_DIR, tool["file"])
         )
 
-    return {"detail": "Not Found"}
+    return FileResponse(
+        os.path.join(FRONTEND_DIR, "404.html")
+    )
