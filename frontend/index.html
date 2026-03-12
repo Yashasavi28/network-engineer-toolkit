@@ -3,7 +3,7 @@
 <html>
 
 <head>
-
+<meta name="keywords" content="subnet calculator, cidr calculator, vlsm calculator, bgp configuration generator, networking tools">
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
-<link rel="canonical" href="https://yourdomain.com/">
+<link rel="canonical" href="https://network-toolkit-api.onrender.com/">
 
 <meta name="theme-color" content="#111827">
 
@@ -20,16 +20,33 @@
 
 <meta property="og:description" content="Free networking calculators and configuration generators for network engineers.">
 
-<meta property="og:image" content="assets/og-image.png">
+<meta property="og:image" content="https://network-toolkit-api.onrender.com/assets/og-image.png">
 
 <meta property="og:type" content="website">
 
 <meta name="description" content="NetOpsKit is a free toolkit for network engineers. Subnet calculator, CIDR tools, IPv6 tools, configuration generators and more.">
 
 <meta name="author" content="NetOpsKit">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
+<style>
+html{
+scroll-behavior:smooth;
+}
+</style>
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"WebSite",
+"name":"NetOpsKit",
+"url":"https://network-toolkit-api.onrender.com",
+"description":"Networking tools for engineers including subnet calculator, CIDR summarization and BGP configuration generator."
+}
+</script>
 </head>
 
 <body id="body" class="bg-gray-100 transition-colors duration-300">
@@ -40,7 +57,7 @@
 
 <div class="flex items-center gap-2">
 
-<img src="assets/logo-icon.png" width="36" alt="NetOpsKit Logo" loading="lazy">
+<img src="/assets/logo-icon.png" width="36" alt="NetOpsKit Logo" loading="lazy">
 
 <div class="text-xl font-bold">
 NetOpsKit
@@ -64,28 +81,30 @@ Networking Tools for Engineers
 
 <!-- HERO SECTION -->
 
-<div class="max-w-6xl mx-auto mt-10 px-6 text-center">
 
-<h1 class="text-4xl font-bold text-gray-800 mb-4">
-NetOpsKit
+<div class="max-w-6xl mx-auto mt-14 px-6 text-center">
+
+<h1 class="text-5xl font-bold text-gray-800 mb-4">
+Networking Tools Built for Engineers
 </h1>
 
 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-Fast networking calculators and configuration generators for network engineers.
-Subnetting, CIDR, IPv6, BGP configs and more — all in one place.
+Subnet • CIDR • IPv6 • BGP Config Generator — fast and simple utilities for network engineers.
 </p>
 
 <div class="mt-6">
 
 <a href="#tools"
-class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition">
-Start Using Tools
+class="bg-blue-600 text-white px-7 py-3 rounded-lg shadow hover:bg-blue-700 transition font-semibold">
+
+Start Using Tools →
+
 </a>
 
 </div>
 
-<div class="mt-6 text-sm text-gray-500">
-Used by network engineers worldwide 🌍
+<div id="liveRuns" class="mt-6 text-sm text-gray-500">
+⚡ Loading tool activity...
 </div>
 
 </div>
@@ -94,16 +113,53 @@ Used by network engineers worldwide 🌍
 
 <div class="max-w-xl mx-auto mt-8">
 
+<div class="relative">
+
 <input
 id="search"
 aria-label="Search networking tools"
 onkeyup="searchTools()"
-placeholder="Search networking tools..."
+placeholder="🔍 Search networking tools..."
 class="w-full p-3 rounded-lg border shadow"
 />
 
+<div
+id="searchSuggestions"
+class="absolute bg-white shadow-lg rounded-lg mt-1 w-full hidden z-10">
 </div>
 
+</div>
+
+</div>
+
+<!-- FEATURED TOOL -->
+
+<div class="max-w-4xl mx-auto mt-10 px-6">
+
+<div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8 rounded-2xl shadow-lg">
+
+<div class="text-sm uppercase tracking-wide mb-2">
+⭐ Featured Tool
+</div>
+
+<div class="text-2xl font-bold mb-2">
+Subnet Calculator
+</div>
+
+<div class="text-blue-100 mb-4">
+Quickly calculate network address, broadcast address and usable hosts.
+</div>
+
+<a href="/subnet-calculator"
+class="inline-block bg-white text-blue-600 px-5 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+
+Open Subnet Calculator →
+
+</a>
+
+</div>
+
+</div>
 <!-- MOST USED TOOLS -->
 
 <div class="max-w-6xl mx-auto mt-12 px-6">
@@ -132,21 +188,31 @@ Loading most used tools...
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-<a href="subnet.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/subnet-calculator" class="tool bg-white p-6 rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 block">
 
-<div class="text-3xl mb-3">🌐</div>
+<div class="flex items-center gap-3 mb-3">
+
+<div class="bg-blue-100 text-blue-600 p-3 rounded-xl text-xl">
+🌐
+</div>
 
 <div class="font-semibold text-lg">
 Subnet Calculator
 </div>
 
-<div class="text-gray-500 text-sm mt-2">
-Most used tool for calculating network and broadcast address.
+</div>
+
+<div class="text-gray-600 text-sm">
+Calculate network address, broadcast address and usable hosts.
+</div>
+
+<div class="mt-4 text-sm text-blue-600 font-semibold">
+→ Open Tool
 </div>
 
 </a>
 
-<a href="cidr.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/cidr-summarization" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 
 <div class="text-3xl mb-3">🧮</div>
 
@@ -160,7 +226,7 @@ Summarize multiple networks into a single CIDR block.
 
 </a>
 
-<a href="bgp.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/bgp-config-generator" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 
 <div class="text-3xl mb-3">📡</div>
 
@@ -189,7 +255,7 @@ IP Address Tools
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-<a href="subnet.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/subnet-calculator" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">🌐</div>
 <div class="font-semibold text-lg">Subnet Calculator</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -197,7 +263,7 @@ Calculate network address, broadcast address and usable hosts.
 </div>
 </a>
 
-<a href="iprange.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/ip-range-calculator" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">📊</div>
 <div class="font-semibold text-lg">IP Range Calculator</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -205,7 +271,7 @@ Calculate number of IPs between two IPv4 addresses.
 </div>
 </a>
 
-<a href="vlsm.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/vlsm-calculator" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">📐</div>
 <div class="font-semibold text-lg">VLSM Calculator</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -213,7 +279,7 @@ Variable Length Subnet Mask calculator for network design.
 </div>
 </a>
 
-<a href="wildcard.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/wildcard-mask-calculator" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">🎯</div>
 <div class="font-semibold text-lg">Wildcard Mask Calculator</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -221,7 +287,7 @@ Convert subnet mask into wildcard mask used in Cisco ACL and OSPF.
 </div>
 </a>
 
-<a href="ipconvert.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/ip-to-binary-converter" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">🔢</div>
 <div class="font-semibold text-lg">IP to Binary Converter</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -229,7 +295,7 @@ Convert IPv4 address into binary representation.
 </div>
 </a>
 
-<a href="reversedns.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/reverse-dns-generator" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">🔁</div>
 <div class="font-semibold text-lg">Reverse DNS Generator</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -237,7 +303,7 @@ Generate PTR record from IPv4 address for reverse DNS lookup.
 </div>
 </a>
 
-<a href="cidr.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/cidr-summarization" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">🧮</div>
 <div class="font-semibold text-lg">CIDR Summarization</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -245,7 +311,7 @@ Summarize multiple networks into a single CIDR block.
 </div>
 </a>
 
-<a href="ipv6.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/ipv6-subnet-calculator" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">🧬</div>
 <div class="font-semibold text-lg">IPv6 Subnet Calculator</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -253,7 +319,7 @@ Calculate IPv6 network address and prefix information.
 </div>
 </a>
 
-<a href="ipclass.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/ipclass" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">🧭</div>
 <div class="font-semibold text-lg">IP Class Detector</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -275,7 +341,7 @@ Routing & Config Tools
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-<a href="bgp.html" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
+<a href="/bgp-config-generator" class="tool bg-white p-6 rounded-xl shadow hover:shadow-lg transition hover:scale-105 duration-200">
 <div class="text-3xl mb-3">📡</div>
 <div class="font-semibold text-lg">BGP Config Generator</div>
 <div class="text-gray-500 text-sm mt-2">
@@ -329,7 +395,7 @@ NetOpsKit provides networking calculators and configuration generators for netwo
 </div>
 
 
-<div class="mt-4 space-x-4">
+<div class="mt-4 flex justify-center flex-wrap gap-4">
 
 <a href="https://github.com/Yashasavi28/network-engineer-toolkit" target="_blank" rel="noopener" class="hover:text-white">
 GitHub
@@ -374,17 +440,45 @@ function searchTools(){
 
 let input=document.getElementById("search").value.toLowerCase()
 let tools=document.getElementsByClassName("tool")
+let suggestions=document.getElementById("searchSuggestions")
+
+suggestions.innerHTML=""
 
 for(let i=0;i<tools.length;i++){
 
 let text=tools[i].innerText.toLowerCase()
 
 if(text.includes(input)){
+
 tools[i].style.display="block"
-}else{
-tools[i].style.display="none"
+
+if(input.length>0){
+
+let titleEl = tools[i].querySelector(".font-semibold")
+if(!titleEl) continue
+let name = titleEl.innerText
+let link=tools[i].getAttribute("href")
+
+suggestions.innerHTML+=`
+<a href="${link}" class="block px-4 py-2 hover:bg-gray-100">
+${name}
+</a>
+`
+
 }
 
+}else{
+
+tools[i].style.display="none"
+
+}
+
+}
+
+if(input.length>0 && suggestions.innerHTML!=""){
+suggestions.classList.remove("hidden")
+}else{
+suggestions.classList.add("hidden")
 }
 
 }
@@ -401,7 +495,31 @@ let html=""
 
 for(const tool in data.tools){
 
-html += `<p><b>${tool}</b>: ${data.tools[tool]} uses</p>`
+let value = data.tools[tool]
+
+let barWidth = Math.min(value * 20, 300)
+
+html += `
+<div style="margin-bottom:12px">
+
+<div style="font-weight:600">
+${tool} — ${value} uses
+</div>
+
+<div style="background:#e5e7eb;height:10px;border-radius:6px;margin-top:4px">
+
+<div style="
+width:${barWidth}px;
+background:#2563eb;
+height:10px;
+border-radius:6px;
+">
+</div>
+
+</div>
+
+</div>
+`
 
 }
 
@@ -435,16 +553,16 @@ let sorted = Object.entries(tools).sort((a,b)=>b[1]-a[1])
 let html=""
 
 const toolInfo={
-subnet:{name:"Subnet Calculator",icon:"🌐",link:"subnet.html"},
-cidr:{name:"CIDR Summarization",icon:"🧮",link:"cidr.html"},
-ipv6:{name:"IPv6 Subnet Calculator",icon:"🧬",link:"ipv6.html"},
-iprange:{name:"IP Range Calculator",icon:"📊",link:"iprange.html"},
-vlsm:{name:"VLSM Calculator",icon:"📐",link:"vlsm.html"},
-wildcard:{name:"Wildcard Mask Calculator",icon:"🎯",link:"wildcard.html"},
-ipconvert:{name:"IP Converter",icon:"🔢",link:"ipconvert.html"},
-reversedns:{name:"Reverse DNS Generator",icon:"🔁",link:"reversedns.html"},
-ipclass:{name:"IP Class Detector",icon:"🧭",link:"ipclass.html"},
-bgp:{name:"BGP Generator",icon:"📡",link:"bgp.html"},
+subnet:{name:"Subnet Calculator",icon:"🌐",link:"/subnet-calculator"},
+cidr:{name:"CIDR Summarization",icon:"🧮",link:"/cidr-summarization"},
+ipv6:{name:"IPv6 Subnet Calculator",icon:"🧬",link:"/ipv6-subnet-calculator"},
+iprange:{name:"IP Range Calculator",icon:"📊",link:"/ip-range-calculator"},
+vlsm:{name:"VLSM Calculator",icon:"📐",link:"/vlsm-calculator"},
+wildcard:{name:"Wildcard Mask Calculator",icon:"🎯",link:"/wildcard-mask-calculator"},
+ipconvert:{name:"IP Converter",icon:"🔢",link:"/ip-to-binary-converter"},
+reversedns:{name:"Reverse DNS Generator",icon:"🔁",link:"/reverse-dns-generator"},
+ipclass:{name:"IP Class Detector",icon:"🧭",link:"/ipclass"},
+bgp:{name:"BGP Generator",icon:"📡",link:"/bgp-config-generator"},
 interface:{name:"Interface Config Generator",icon:"🔧",link:"interface.html"}
 }
 
@@ -542,6 +660,28 @@ document.getElementById("darkToggle").innerText="☀️ Light"
 
 }
 loadTheme()
+
+async function loadHeroStats(){
+
+try{
+
+const response = await fetch("/stats")
+
+const data = await response.json()
+
+document.getElementById("liveRuns").innerHTML =
+"⚡ " + data.total_visits + " tool runs so far"
+
+}catch{
+
+document.getElementById("liveRuns").innerHTML =
+"⚡ Networking tools used worldwide"
+
+}
+
+}
+
+loadHeroStats()
 </script>
 
 </body>

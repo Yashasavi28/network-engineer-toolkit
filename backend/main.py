@@ -71,7 +71,37 @@ def serve_home():
     response = FileResponse("frontend/index.html")
     response.headers["Cache-Control"] = "no-cache"
     return response
+# -----------------------------
+# SEO tool pages
+# -----------------------------
 
+@app.get("/subnet-calculator")
+def subnet_seo():
+    return FileResponse("frontend/subnet.html")
+
+@app.get("/cidr-summarization")
+def cidr_seo():
+    return FileResponse("frontend/cidr.html")
+
+@app.get("/ip-range-calculator")
+def iprange_seo():
+    return FileResponse("frontend/iprange.html")
+
+@app.get("/vlsm-calculator")
+def vlsm_seo():
+    return FileResponse("frontend/vlsm.html")
+
+@app.get("/wildcard-mask-calculator")
+def wildcard_seo():
+    return FileResponse("frontend/wildcard.html")
+
+@app.get("/ip-to-binary-converter")
+def ipconvert_seo():
+    return FileResponse("frontend/ipconvert.html")
+
+@app.get("/reverse-dns-generator")
+def reversedns_seo():
+    return FileResponse("frontend/reversedns.html")
 
 @app.get("/{page_name}.html")
 def serve_page(page_name: str):
